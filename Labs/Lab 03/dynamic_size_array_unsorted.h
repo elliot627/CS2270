@@ -22,5 +22,3 @@ bool contains(const int_array& arr, const int& target);
 bool remove(int_array& arr, const int& target);
 
 void print(const int_array& arr);
-
-void printAll(const int_array& arr);

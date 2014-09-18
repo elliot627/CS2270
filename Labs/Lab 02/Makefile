@@ -5,7 +5,7 @@
 
 # define the different outputs of all g++ commands
 # on Ubuntu, the .exe suffix disappears
-EXPENDABLES = test_int_array.o test_int_array dynamic_size_array_sorted.o
+EXPENDABLES = test_int_array.o test_int_array dynamic_size_array_unsorted.o
 
 # make all is listed first, which lets you type "make" to recompile 
 # anything that has changed in either your class, your test code, 
@@ -13,16 +13,16 @@ EXPENDABLES = test_int_array.o test_int_array dynamic_size_array_sorted.o
 all:
 	@make $(EXPENDABLES)
 
-# this compiles your test program and your dynamic_size_array_sorted class together
-test_int_array: test_int_array.o dynamic_size_array_sorted.o
-	g++ -std=c++0x -Wall -g test_int_array.o dynamic_size_array_sorted.o -o test_int_array 
+# this compiles your test program and your dynamic_size_array_unsorted class together
+test_int_array: test_int_array.o dynamic_size_array_unsorted.o
+	g++ -std=c++0x -Wall -g test_int_array.o dynamic_size_array_unsorted.o -o test_int_array 
 
 # this compiles your test program, which is executable
-dynamic_size_array_sorted.o: dynamic_size_array_sorted.h dynamic_size_array_sorted.cpp
-	g++ -std=c++0x -Wall -g -c dynamic_size_array_sorted.cpp -o dynamic_size_array_sorted.o
+dynamic_size_array_unsorted.o: dynamic_size_array_unsorted.h dynamic_size_array_unsorted.cpp
+	g++ -std=c++0x -Wall -g -c dynamic_size_array_unsorted.cpp -o dynamic_size_array_unsorted.o
 
 # this compiles your test program, which is executable
-test_int_array.o: dynamic_size_array_sorted.h test_int_array.cpp
+test_int_array.o: dynamic_size_array_unsorted.h test_int_array.cpp
 	g++ -std=c++0x -Wall -g -c test_int_array.cpp -o test_int_array.o
 
 # this deletes all the output files

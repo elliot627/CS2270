@@ -57,22 +57,23 @@ void add(int_array& arr, const int& payload){
 }
 
 bool remove(int_array& arr, const int& target){
-	if(!(contains(arr, target))){						//if target is not contained in data[], return false	
+	if(!(contains(arr, target))){						//if target is not contained in arr.data[], return false	
 		return false;
 	}
-	else{
-		for(unsigned int i = 0; i < arr.count; i++){	//otherwise, find it!
-			if(arr.data[i] == target){
-				if(i == (arr.count - 1)){				//if target is the last of the 
-					arr.count--;
-					return true;
-				}
-				arr.data[i] = arr.data[(arr.count -1)];
-				arr.count--;
-				return true;
+	if(arr.data[arr.count - 1] == target){				//if target is the last item, simply decrement count
+		arr.count--;
+		return true;
+	}
+	for(unsigned int i = 0; i < arr.count; i++){
+		if(arr.data[i] == target){						//first, find location of target
+			while(i < arr.count){
+				arr.data[i] = arr.data[i + 1];			//then overwrite it to the end of the array
+				i++;
 			}
+			arr.count--;
+			return true;
 		}
 	}
-	return false;
+	return false;										//just a default case to make the compiler happy
 }
 

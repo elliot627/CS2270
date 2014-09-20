@@ -10,6 +10,7 @@ int main()
 	
 	init(arr);
 	
+	
 	for (unsigned int i = 0; i < 25; ++i)
 	{
 		cout << "Enter a number to add: ";

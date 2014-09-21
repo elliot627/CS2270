@@ -2,28 +2,23 @@
 
 using namespace std;
 
-void add_node(node*& head_ptr, const int& payload)
-{
+void add_node(node*& head_ptr, const int& payload){
 
 }
 
-bool remove_node(node*& head_ptr, const int& target)
-{
+bool remove_node(node*& head_ptr, const int& target){
 	return false;
 }
 
-bool find_list(const node*& head_ptr, const int& target)
-{
+bool find_list(const node*& head_ptr, const int& target){
 	return false;
 }
 
-void clear_list(node*& head_ptr)
-{
+void clear_list(node*& head_ptr){
 
 }
 
-void print_list(const node*& head_ptr)
-{
+void print_list(const node*& head_ptr){
 	const node* cursor = head_ptr;
 	while (cursor != nullptr)
 	{
@@ -33,8 +28,7 @@ void print_list(const node*& head_ptr)
 	cout << endl;
 }
 
-void copy_list(const node*& source_ptr, node*& dest_ptr)
-{
+void copy_list(const node*& source_ptr, node*& dest_ptr){
 
 }
 

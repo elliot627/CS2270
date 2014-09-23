@@ -1,3 +1,10 @@
+/*
+ * Elliot Whitehead
+ * CSCI-2270
+ * Dr. White
+ * Homework 01
+ */
+
 #include "singly_linked_list.h"
 
 using namespace std;

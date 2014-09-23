@@ -3,7 +3,29 @@
 using namespace std;
 
 void add_node(node*& head_ptr, const int& payload){
-
+	if(head_ptr == nullptr){				//check if list is empty
+		node* fresh = new node;				
+		fresh->data = payload;
+		fresh->next = nullptr;
+		head_ptr = fresh;
+		return;
+	}
+	if(head_ptr->data > payload){			//check if payload should be first in list
+		node* first = new node;
+		first->data = payload;
+		first->next = head_ptr;
+		head_ptr = first;
+		return;
+	}
+	node* cursor = head_ptr;
+	while(cursor->next != nullptr && cursor->next->data < payload){		//traverse list until appropriate place is found
+			cursor = cursor->next;
+	}
+	node* incoming = new node;
+	incoming->data = payload;
+	incoming->next = cursor->next;
+	cursor->next = incoming;
+	
 }
 
 bool remove_node(node*& head_ptr, const int& target){

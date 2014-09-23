@@ -36,8 +36,8 @@ bool remove_node(node*& head_ptr, const int& target){
 			delete unwanted;
 			return true;
 		}
-		node* cursor = head_ptr
-		while(cursor-> != nullptr){
+		node* cursor = head_ptr;
+		while(cursor->next != nullptr){
 			if(cursor->next->data == target){							//once target found, stop looking,
 				break;
 			}
@@ -54,11 +54,24 @@ bool remove_node(node*& head_ptr, const int& target){
 }
 
 bool find_list(const node*& head_ptr, const int& target){
+	if(head_ptr->next == nullptr){
+		return false;													//check for empty list
+	}	
+	if(head_ptr->data == target){										//check first item for target
+		return true;
+	}
+	const node* cursor = head_ptr;										//otherwise, check all others
+	while (cursor->next != nullptr){
+		if(cursor->next->data == target){
+			return true;
+		}
+		cursor = cursor->next;
+	}
 	return false;
 }
 
 void clear_list(node*& head_ptr){
-
+	
 }
 
 void print_list(const node*& head_ptr){

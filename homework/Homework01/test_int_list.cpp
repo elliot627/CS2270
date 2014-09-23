@@ -2,8 +2,7 @@
 
 using namespace std;
 
-bool check_list(const node*& head_ptr)
-{
+bool check_list(const node*& head_ptr){
 	for (const node*& cursor = head_ptr; 
 		cursor != nullptr && cursor->next != nullptr;
 		cursor = cursor->next)
@@ -11,8 +10,7 @@ bool check_list(const node*& head_ptr)
 	return true;
 }
 
-int main()
-{
+int main(){
 	int num;
 	node* head_ptr1 = nullptr;      // This will be the list 1 head
 	const node* const_head_ptr1;	

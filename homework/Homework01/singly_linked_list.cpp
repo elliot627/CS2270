@@ -34,13 +34,19 @@ bool remove_node(node*& head_ptr, const int& target){
 			node* unwanted = head_ptr;
 			head_ptr = head_ptr->next;
 			delete unwanted;
+			return true;
 		}
-		node* 
-		while(){
-			
+		node* cursor = head_ptr
+		while(cursor-> != nullptr){
+			if(cursor->next->data == target){							//once target found, stop looking,
+				break;
+			}
+			cursor = cursor->next;										//otherwise, keep looking
 		}
-		
-		
+		node* unwanted = cursor->next;									//and kill it!
+		cursor->next = cursor->next->next;
+		delete unwanted;
+		return true;
 	}
 	else{
 		return false;

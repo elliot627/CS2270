@@ -71,7 +71,13 @@ bool find_list(const node*& head_ptr, const int& target){
 }
 
 void clear_list(node*& head_ptr){
-	
+	if(head_ptr == nullptr){
+		return;										//base case for empty list / reaching end of list
+	}
+	clear_list(head_ptr->next);						//Recursive call will work to end of list, then start deleting nodes on the way back
+	delete head_ptr;								//[after recursion] delete this particular node which was passed in as head_ptr
+	head_ptr = nullptr;
+	return;
 }
 
 void print_list(const node*& head_ptr){

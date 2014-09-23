@@ -29,7 +29,22 @@ void add_node(node*& head_ptr, const int& payload){
 }
 
 bool remove_node(node*& head_ptr, const int& target){
-	return false;
+	if(head_ptr != nullptr){											//ensure list is not empty
+		if(head_ptr->data == target){									//handle target removal at list head
+			node* unwanted = head_ptr;
+			head_ptr = head_ptr->next;
+			delete unwanted;
+		}
+		node* 
+		while(){
+			
+		}
+		
+		
+	}
+	else{
+		return false;
+	}
 }
 
 bool find_list(const node*& head_ptr, const int& target){

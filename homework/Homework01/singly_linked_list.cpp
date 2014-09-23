@@ -98,6 +98,23 @@ void print_list(const node*& head_ptr){
 }
 
 void copy_list(const node*& source_ptr, node*& dest_ptr){
-
+	if(dest_ptr != nullptr){								//if dest_ptr isn't already null, clear it
+		clear_list(dest_ptr);
+	}
+	if(source_ptr != nullptr){								//proceed if source_ptr has nodes to copy
+		if(source_ptr->next == nullptr){					//if source only has one node, add it and return
+			add_node(dest_ptr, source_ptr->data);
+			return;
+		}
+		add_node(dest_ptr, source_ptr->data);				//add the first node 
+		const node* cursor = source_ptr;
+		while(cursor->next != nullptr){						//then add the rest
+			add_node(dest_ptr, cursor->next->data);
+			cursor = cursor->next;
+		}
+	}
+	
+	
+	
 }
 

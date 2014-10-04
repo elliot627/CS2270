@@ -13,7 +13,6 @@ bool check_list(const node* head_ptr)
 
 int main()
 {
-	int num;
 	node* head_ptr1 = nullptr;      // This will be the list 1 head
 	const node* const_head_ptr1;	
 	const node* const_tail_ptr1;	
@@ -22,9 +21,7 @@ int main()
 	 
 	for (unsigned int k = 0; k < 10; ++k)
 	{
-		cout << "Enter a number to add: ";
-		cin >> num;
-		add_node(head_ptr1, tail_ptr1, num);	// add a number to the list
+		add_node(head_ptr1, tail_ptr1, k);	// add a number to the list
 		const_head_ptr1 = head_ptr1;
 		print_list(const_head_ptr1);
 		if (!check_list(const_head_ptr1))
@@ -38,23 +35,11 @@ int main()
 	
 	for (unsigned int k = 0; k < 10; ++k)
 	{
-		cout << "Enter a number to find: ";
-		cin >> num;
+		remove_node(head_ptr1, tail_ptr1, k);	// remove things
 		const_head_ptr1 = head_ptr1;
-		if (find_list(const_head_ptr1, num))	// find things
-			cout << "found " << num << endl;
-		else
-			cout << "did not find " << num << endl;
-	}
-	
-	for (unsigned int k = 0; k < 10; ++k)
-	{
-		cout << "Enter a number to remove: ";
-		cin >> num;
-		remove_node(head_ptr1, tail_ptr1, num);	// remove things
-		const_head_ptr1 = head_ptr1;
-		
+		const_tail_ptr1 = tail_ptr1;
 		print_list(const_head_ptr1);
+		print_list_backwards(const_tail_ptr1);
 		if (!check_list(const_head_ptr1))
 			cout << "List is out of order!" << endl;
 	}

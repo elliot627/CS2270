@@ -35,9 +35,14 @@ int main()
 		}
 	}
 	
+	cout << "The list is now: " << endl;
+	for(unsigned int i = 0; i < arr.count; i++){
+		cout << arr.data[i] << " ";
+	}
+	
 	for (unsigned int i = 0; i < 10; ++i)
 	{
-		cout << "Enter a number to remove: ";
+		cout << "\nEnter a number to remove: ";
 		cin >> num;
 		remove(arr, num);
 		print(arr);

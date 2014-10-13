@@ -22,6 +22,10 @@ void destr(array_queue& que){
 
 void print(const array_queue& que){
 	cout >> "queue front: ";
+	for(unsigned int i = que.front; i != que.back; i = (i +1) % que.arr.capacity){
+		cout << que.arr.data[i] << " ";
+	}
+	cout << "back of que" << endl;
 }
 
 void add(array_queue& que, const int& payload){

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void add_node(node*& head_ptr, node*& tail_ptr, const int& payload)
+void add_node(node*& head_ptr, node*& tail_ptr, const char& payload)
 {
 	node* added_node = new node;
 	added_node->data = payload;
@@ -49,7 +49,7 @@ void add_node(node*& head_ptr, node*& tail_ptr, const int& payload)
 	}		
 }
 
-bool remove_node(node*& head_ptr, node*& tail_ptr, const int& target)
+bool remove_node(node*& head_ptr, node*& tail_ptr, const char& target)
 {
 	if (head_ptr == nullptr) return false;
 	
@@ -61,7 +61,6 @@ bool remove_node(node*& head_ptr, node*& tail_ptr, const int& target)
 			tail_ptr = nullptr;
 		head_ptr = head_ptr->next;
 		
-		// added this line
 		if (head_ptr != nullptr)
 			head_ptr->prev = nullptr;
 		
@@ -95,7 +94,7 @@ bool remove_node(node*& head_ptr, node*& tail_ptr, const int& target)
 		return false;	
 }
 
-bool find_list(const node* head_ptr, const int& target)
+bool find_list(const node* head_ptr, const char& target)
 {
 	const node* cursor = head_ptr;
 	while (cursor != nullptr)
@@ -153,6 +152,7 @@ void copy_list(const node* source_head_ptr,
 	dest_head_ptr->next = nullptr;
 	// define the prev pointer for the destination's head
 	dest_head_ptr->prev = nullptr;
+	dest_tail_ptr = dest_head_ptr; 
 	node* cursor = dest_head_ptr;
 	while (source_head_ptr->next != nullptr)
 	{
@@ -160,7 +160,7 @@ void copy_list(const node* source_head_ptr,
 		cursor->next = new node();
 		cursor->next->data = source_head_ptr->data;
 		cursor->next->next = nullptr;
-		// set the previous pointer for the node we just made
+		// set the previous pocharer for the node we just made
 		cursor->next->prev = cursor;
 		cursor = cursor->next;
 		dest_tail_ptr = cursor;

@@ -11,7 +11,7 @@ using namespace std;
 
 void add_node(node*& head_ptr, const int& payload){
 	if(head_ptr == nullptr){				//check if list is empty
-		node* fresh = new node;				
+		node* fresh = new node;
 		fresh->data = payload;
 		fresh->next = nullptr;
 		head_ptr = fresh;
@@ -32,7 +32,7 @@ void add_node(node*& head_ptr, const int& payload){
 	incoming->data = payload;
 	incoming->next = cursor->next;
 	cursor->next = incoming;
-	
+
 }
 
 bool remove_node(node*& head_ptr, const int& target){
@@ -63,7 +63,7 @@ bool remove_node(node*& head_ptr, const int& target){
 bool find_list(const node*& head_ptr, const int& target){
 	if(head_ptr->next == nullptr){
 		return false;													//check for empty list
-	}	
+	}
 	if(head_ptr->data == target){										//check first item for target
 		return true;
 	}
@@ -106,15 +106,11 @@ void copy_list(const node*& source_ptr, node*& dest_ptr){
 			add_node(dest_ptr, source_ptr->data);
 			return;
 		}
-		add_node(dest_ptr, source_ptr->data);				//add the first node 
+		add_node(dest_ptr, source_ptr->data);				//add the first node
 		const node* cursor = source_ptr;
 		while(cursor->next != nullptr){						//then add the rest
 			add_node(dest_ptr, cursor->next->data);
 			cursor = cursor->next;
 		}
 	}
-	
-	
-	
 }
-

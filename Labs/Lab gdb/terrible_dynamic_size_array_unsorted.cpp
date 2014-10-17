@@ -57,7 +57,7 @@ void add(int_array& arr, const int& payload){
 		resize(arr);
 	}
 	//arr.data[++arr.count] = payload;  						ERROR: 		arr.count is being advanced before the payload is added to the appropriate index
-	arr.data[arr.count++] = payload;						  	//FIX:		Add payload to current count, then increment arr.count
+	arr.data[arr.count++] = payload;						  		//FIX:		Add payload to current count, then increment arr.count
 }
 
 bool remove(int_array& arr, const int& target){

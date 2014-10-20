@@ -12,11 +12,11 @@ using namespace std;
 
 // default constructor, creates a 0
 big_number::big_number(){
-  this.head_ptr = this.tail_ptr = new Node();
-  this.head_ptr->next = this.head_ptr->prev = nullptr;
-  this.digits = 1;
-  this.base = 10;
-  this.positive = true;
+  (*this).head_ptr = (*this).tail_ptr = new node();
+  (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
+  (*this).digits = 1;
+  (*this).positive = true;
+  (*this).base = 10;
 }
 
 // int constructor; create big_number from base 10 integer

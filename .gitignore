@@ -1,4 +1,8 @@
 #[Mac OSX Files]
 .DS_Store
 
+#[object files]
 *.o
+
+#executable
+test_big_number

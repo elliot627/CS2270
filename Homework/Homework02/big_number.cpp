@@ -16,7 +16,7 @@ big_number::big_number(){
   this.head_ptr->next = this.head_ptr->prev = nullptr;
   this.digits = 1;
   this.base = 10;
-  this.positive = 10;
+  this.positive = true;
 }
 
 // int constructor; create big_number from base 10 integer

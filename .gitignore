@@ -1,0 +1,4 @@
+#[Mac OSX Files]
+.DS_Store
+
+*.o

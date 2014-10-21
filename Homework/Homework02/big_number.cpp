@@ -13,6 +13,7 @@ using namespace std;
 // default constructor, creates a 0
 big_number::big_number(){
   (*this).head_ptr = (*this).tail_ptr = new node();
+  (*this).head_ptr->data = 0;
   (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
   (*this).digits = 1;
   (*this).positive = true;
@@ -21,7 +22,16 @@ big_number::big_number(){
 
 // int constructor; create big_number from base 10 integer
 big_number::big_number(int i){
-
+  (*this).head_ptr = (*this).tail_ptr = new node();
+  (*this).head_ptr->data = i;
+  (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
+  (*this).digits = 1;
+  if(i < 0){
+    positive = false;
+  }
+  else{
+    positive = true;
+  }
 }
 
 // copy constructor, creates a deep copy of m

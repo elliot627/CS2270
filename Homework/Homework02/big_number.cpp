@@ -24,12 +24,7 @@ big_number::big_number(){
 // int constructor; create big_number from base 10 integer
 big_number::big_number(int i){
   (*this).head_ptr = (*this).tail_ptr = new node();
-
-  //WRONG!
-  (*this).head_ptr->data = i;
-
   (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
-  (*this).digits = 1;
   if(i < 0){
     positive = false;
   }
@@ -37,6 +32,13 @@ big_number::big_number(int i){
     positive = true;
   }
   (*this).base = 10;
+
+
+  //disect i one digit at a time, from the right, and add to the tail of the big_num
+  while(i > base){
+
+  }
+
 }
 
 // copy constructor, creates a deep copy of m

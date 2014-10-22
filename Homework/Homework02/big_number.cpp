@@ -32,6 +32,7 @@ big_number::big_number(int i){
   else{
     positive = true;
   }
+  (*this).base = 10;
 }
 
 // copy constructor, creates a deep copy of m

@@ -4,5 +4,9 @@
 #[object files]
 *.o
 
-#executable
+#[executable]
 test_big_number
+
+#[shell files]
+*.sh
+

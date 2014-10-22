@@ -1,11 +1,12 @@
 #include "big_number.h"
 
 /* Private big_num variables
- * node* head_ptr
- * node* tail_ptr
- * unsigned int digits
- * bool positive
- * unsigned int base
+
+ *  node* head_ptr
+ *  node* tail_ptr
+ *  unsigned int digits
+ *  bool positive
+ *  unsigned int base
 */
 
 using namespace std;
@@ -37,6 +38,12 @@ big_number::big_number(int i){
 
 // copy constructor, creates a deep copy of m
 big_number::big_number(const big_number& m){
+  (*this).head_ptr = (*this).tail_ptr = new node();
+  (*this).positive = m.positive;
+  (*this).base = m.base;
+
+  //Need clarification on parameters...
+  copy_list(m.head_ptr, (*this).head_ptr, (*this).tail_ptr);
 
 }
 

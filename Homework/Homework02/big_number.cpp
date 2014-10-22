@@ -24,7 +24,10 @@ big_number::big_number(){
 // int constructor; create big_number from base 10 integer
 big_number::big_number(int i){
   (*this).head_ptr = (*this).tail_ptr = new node();
+
+  //WRONG!
   (*this).head_ptr->data = i;
+
   (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
   (*this).digits = 1;
   if(i < 0){

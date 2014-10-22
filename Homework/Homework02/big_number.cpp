@@ -41,10 +41,7 @@ big_number::big_number(const big_number& m){
   (*this).head_ptr = (*this).tail_ptr = new node();
   (*this).positive = m.positive;
   (*this).base = m.base;
-
-  //Need clarification on parameters...
   copy_list(m.head_ptr, (*this).head_ptr, (*this).tail_ptr);
-
 }
 
 // create a big_number from a string

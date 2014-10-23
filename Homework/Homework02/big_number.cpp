@@ -11,6 +11,29 @@
 
 using namespace std;
 
+//prepends an item to the head_ptr of the big_num;
+//
+//- SHOULD ONLY BE PASSED SINGLE DIGITS!
+//TODO - Will need to be converted to handle chars for bases > 10
+//- ***Only used to add nodes during construction - Does not need to handle ***
+
+void big_number::prepend(const int in){
+  if((*this).digits == 0){                                  //this block may be unecessary - safe to assume that no big_nums will ever be instantiated empty?
+    (*this).head_ptr = (*this).tail_ptr = new node();
+    (*this).head_ptr->data = in;
+    (*this).digits++;
+  }
+  else{
+    node* incoming = new node();
+    incoming->data = in;
+    incoming->prev = nullptr;
+    incoming->next = (*this).head_ptr;
+    (*this).head_ptr->prev = incoming;
+    (*this).head_ptr = incoming;
+    (*this).digits++;
+  }
+}
+
 // default constructor, creates a 0
 big_number::big_number(){
   (*this).head_ptr = (*this).tail_ptr = new node();
@@ -40,6 +63,7 @@ big_number::big_number(int i){
     (*this).head_ptr = (*this).tail_ptr = new node();
     (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
     (*this).head_ptr->data = i;
+    (*this).digits = 1;
   }
   else{
     //disect i's digits, from right to left and prepend to big_num

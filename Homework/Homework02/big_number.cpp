@@ -23,20 +23,34 @@ big_number::big_number(){
 
 // int constructor; create big_number from base 10 integer
 big_number::big_number(int i){
-  (*this).head_ptr = (*this).tail_ptr = new node();
-  (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
+  //assign this.base
+  (*this).base = 10;
+
+  //assign this.positive
   if(i < 0){
     positive = false;
+    i *= -1;
   }
   else{
     positive = true;
   }
-  (*this).base = 10;
 
-
-  //disect i one digit at a time, from the right, and add to the tail of the big_num
-  while(i > base){
-
+  //if incoming int is only one digit, handle appropriately
+  if(i < (*this).base){
+    (*this).head_ptr = (*this).tail_ptr = new node();
+    (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
+    (*this).head_ptr->data = i;
+  }
+  else{
+    //disect i's digits, from right to left and prepend to big_num
+    while(i > (*this).base){
+      (*this).prepend(i % 10);
+      i /= 10;
+    }
+    //add final digit if it is not == 0
+    if(i != 0){
+      (*this).prepend(i);
+    }
   }
 
 }

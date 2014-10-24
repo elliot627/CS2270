@@ -7,6 +7,7 @@
 #[executables]
 test_big_number
 test_int_list
+singly_linked_list_reverse
 
 #[shell files]
 *.sh

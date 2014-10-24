@@ -1,4 +1,4 @@
-#import <iostream>
+#inlcude <iostream>
 using namespace std;
 
 struct node{

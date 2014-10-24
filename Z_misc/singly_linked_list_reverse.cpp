@@ -1,5 +1,6 @@
 using namespace std;
 
+//singly linked list code
 void add_node(node*& head_ptr, const int& payload){
 	if(head_ptr == nullptr){				//check if list is empty
 		node* fresh = new node;
@@ -104,4 +105,21 @@ void copy_list(const node*& source_ptr, node*& dest_ptr){
 			cursor = cursor->next;
 		}
 	}
+}
+
+void reverse_list(node* cursor){
+	if(cursor == nullptr) return; 							//handles empty list
+	if(cursor->next == nullptr){							//exit condition
+		head_ptr = cursor;
+		return;
+	}
+	reverse_list(cursor->next);
+	cursor->next->next = cursor;									//after recursion returns, assign pointers to reverse the list!
+	cursor->next = nullptr;									
+}
+
+
+int main(){
+	
+	
 }

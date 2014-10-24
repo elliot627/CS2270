@@ -88,7 +88,7 @@ void clear_list(node*& head_ptr){
 	return;
 }
 
-void print_list(const node*& head_ptr){
+void print_list(const node* head_ptr){
 	const node* cursor = head_ptr;
 	while (cursor != nullptr)
 	{
@@ -129,5 +129,19 @@ void reverse_list(node* cursor){
 
 
 int main(){
+	add_node(head_ptr, 0);
+	add_node(head_ptr, 1);
+	add_node(head_ptr, 2);
+	add_node(head_ptr, 3);
+	add_node(head_ptr, 4);
+	add_node(head_ptr, 5);
+	add_node(head_ptr, 6);
+	
+	print_list(head_ptr);
+	
+	reverse_list(head_ptr);
+	
+	print_list(head_ptr);
+	
 	
 }

@@ -116,6 +116,10 @@ void copy_list(const node*& source_ptr, node*& dest_ptr){
 	}
 }
 
+
+//////////////////
+//reversal code!//
+//////////////////
 void reverse_list(node* cursor){
 	if(cursor == nullptr) return; 							//handles empty list
 	if(cursor->next == nullptr){							//exit condition
@@ -124,7 +128,7 @@ void reverse_list(node* cursor){
 	}
 	reverse_list(cursor->next);
 	cursor->next->next = cursor;									//after recursion returns, assign pointers to reverse the list!
-	cursor->next = nullptr;									
+	cursor->next = nullptr;
 }
 
 
@@ -136,14 +140,14 @@ int main(){
 	add_node(head_ptr, 4);
 	add_node(head_ptr, 5);
 	add_node(head_ptr, 6);
-	
+
 	cout << "List before reversal: " << endl;
-	
+
 	print_list(head_ptr);
-	
+
 	reverse_list(head_ptr);
-	
+
 	cout << "List after reversal: " << endl;
-	
+
 	print_list(head_ptr);
 }

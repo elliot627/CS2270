@@ -1,4 +1,4 @@
-#inlcude <iostream>
+#include <iostream>
 using namespace std;
 
 struct node{
@@ -7,6 +7,9 @@ struct node{
 };
 
 //singly linked list code
+
+node* head_ptr;
+
 void add_node(node*& head_ptr, const int& payload){
 	if(head_ptr == nullptr){				//check if list is empty
 		node* fresh = new node;

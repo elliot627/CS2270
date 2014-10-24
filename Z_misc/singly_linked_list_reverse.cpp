@@ -1,9 +1,10 @@
+#import <iostream>
 using namespace std;
 
 struct node{
 	int data;
 	node* next;
-}
+};
 
 //singly linked list code
 void add_node(node*& head_ptr, const int& payload){

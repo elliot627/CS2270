@@ -137,11 +137,13 @@ int main(){
 	add_node(head_ptr, 5);
 	add_node(head_ptr, 6);
 	
+	cout << "List before reversal: " << endl;
+	
 	print_list(head_ptr);
 	
 	reverse_list(head_ptr);
 	
+	cout << "List after reversal: " << endl;
+	
 	print_list(head_ptr);
-	
-	
 }

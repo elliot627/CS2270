@@ -1,3 +1,5 @@
+//Not Object Oriented
+
 #include <iostream>
 using namespace std;
 
@@ -150,4 +152,5 @@ int main(){
 	cout << "List after reversal: " << endl;
 
 	print_list(head_ptr);
+
 }

@@ -4,9 +4,9 @@ using namespace std;
 
 int main(){
 
-   big_number intTest(139);
+  big_number intTest(139);
 
-  print_list(intTest.head_ptr);
+  print_list(intTest.getHead());
 
 
 

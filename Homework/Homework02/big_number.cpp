@@ -11,6 +11,13 @@
 
   using namespace std;
 
+  //Getter method for use with doubly_linked_list's print_list method
+  //To be removed once cout << is overridden
+  node* big_number::getHead(){
+    return (*this).head_ptr;
+  }
+
+
   //===Precondition: (*this) is no empty===
   //prepends an item to the head_ptr of the big_num;
   //SHOULD ONLY BE PASSED SINGLE DIGITS! - currently only compatible with ints
@@ -64,11 +71,14 @@
     else{
       //disect i's digits, from right to left and prepend to big_num
       while(i > (*this).base){
-        (*this).prepend(i % 10);
+        int temp = i % 10;
+        cout << "Adding: " << temp << endl;
+        (*this).prepend(temp);
         i /= 10;
       }
       //add final digit if it is not == 0
       if(i != 0){
+        cout << "Adding: " << i << endl;
         (*this).prepend(i);
       }
     }

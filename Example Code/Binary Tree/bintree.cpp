@@ -46,8 +46,8 @@
 			r_ptr = tree_copy( root_ptr->right );
 			binary_tree_node* new_node = new binary_tree_node;
 			new_node->data = root_ptr->data;
-			new_node->left = l_ptr;
-			new_node->right = r_ptr;
+			new_node->left = root_ptr->left;
+			new_node->right = root_ptr->right;
 			return new_node;
 		}
     }

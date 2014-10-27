@@ -9,6 +9,31 @@
    *  unsigned int base
   */
 
+
+  /*
+   *int constuctor code from class on Monday:
+   *
+   *  while(i < 0){
+   *    if(head_ptr != nullptr){
+   *      head_ptr->prev = new node();
+   *      head_ptr->prev->data = (i % 10) + '0';
+   *      head_ptr->prev->next = head_ptr;
+   *      head_ptr = head_ptr->prev;
+   *    }
+   *    else{
+   *      head_ptr = new node();
+   *      head_ptr->data = (i % 10) + '0';
+   *      tail_ptr = head_ptr;
+   *
+   *    }
+   *  }
+   *
+   *
+  */
+
+
+
+
   using namespace std;
 
   //Getter method for use with doubly_linked_list's print_list method
@@ -48,8 +73,12 @@
 
   // int constructor; create big_number from base 10 integer
   big_number::big_number(int i){
-    //assign this.base
+
+    //assign instance variables
+    (*this).digits = 0;
     (*this).base = 10;
+    (*this).head_ptr =(*this).tail_ptr = new node();
+    (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
 
     //assign this.positive
     if(i < 0){
@@ -95,7 +124,28 @@
 
   // create a big_number from a string
   big_number::big_number(const string& s, unsigned int b){
+    (*this).digits = 0;
+    (*this).positive;
+    int index = 0;
 
+    if(s[0] == '-'){
+      positive = false;
+      index++;
+    }
+    if(s[0] == '+'){
+      index++;
+    }
+    (*this).head_ptr = (*this).tail_ptr = new node();
+    (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
+    (*this).head_ptr->s[index++];
+
+    while(index < s.length()){
+      (*this).tail_ptr->next = new node();
+      (*this).tail_ptr->next->data = s[index++];
+      (*this).tail_ptr->next->next = nullptr;
+      (*this).tail_ptr->next->prev = tail_ptr;
+      (*this).tail_ptr = tail_ptr->next;
+    }
   }
 
   // destructor

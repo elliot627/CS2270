@@ -145,6 +145,7 @@
       (*this).tail_ptr->next->next = nullptr;
       (*this).tail_ptr->next->prev = tail_ptr;
       (*this).tail_ptr = tail_ptr->next;
+      digits++;
     }
   }
 

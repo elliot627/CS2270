@@ -15,8 +15,10 @@ class big_number
     //custom built additition method to prepend digits to big_num
     void prepend(const char in);
 
-    //getter method for head
+    //accessor  methods for data
     node* getHead();
+    char getHeadData();
+    char getTailData();
 
 		// assignment operator
 		// big_number a = 98; big_number b = 0; ... b = a;

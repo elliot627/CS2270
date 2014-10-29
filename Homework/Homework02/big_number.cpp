@@ -24,7 +24,7 @@
    *      head_ptr = new node();
    *      head_ptr->data = (i % 10) + '0';
    *      tail_ptr = head_ptr;
-   *
+   *      .....?
    *    }
    *  }
    *

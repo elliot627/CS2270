@@ -13,7 +13,7 @@ class big_number
 		big_number(const string& s, unsigned int base);
 
     //custom built additition method to prepend digits to big_num
-    void prepend(const int in);
+    void prepend(const char in);
 
     //getter method for head
     node* getHead();

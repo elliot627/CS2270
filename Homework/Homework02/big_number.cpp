@@ -43,10 +43,10 @@
   }
 
 
-  //===Precondition: (*this) is no empty===
+  //======Precondition: (*this) is not empty=======
   //prepends an item to the head_ptr of the big_num;
   //SHOULD ONLY BE PASSED SINGLE DIGITS! - currently only compatible with ints
-  void big_number::prepend(const int in){
+  void big_number::prepend(const char in){
     if((*this).head_ptr){
       node* incoming = new node();
       incoming->data = in;
@@ -100,15 +100,16 @@
     else{
       //disect i's digits, from right to left and prepend to big_num
       while(i > (*this).base){
-        int temp = i % 10;
+        char temp = i % 10 + '0';
         cout << "Adding: " << temp << endl;
         (*this).prepend(temp);
         i /= 10;
       }
       //add final digit if it is not == 0
       if(i != 0){
-        cout << "Adding: " << i << endl;
-        (*this).prepend(i);
+        char temp = i + '0';
+        cout << "Adding: " << temp << endl;
+        (*this).prepend(temp);
       }
     }
 
@@ -125,7 +126,7 @@
   // create a big_number from a string
   big_number::big_number(const string& s, unsigned int b){
     (*this).digits = 0;
-    (*this).positive;
+    (*this).positive = true;
     int index = 0;
 
     if(s[0] == '-'){
@@ -137,7 +138,7 @@
     }
     (*this).head_ptr = (*this).tail_ptr = new node();
     (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
-    (*this).head_ptr->s[index++];
+    (*this).head_ptr->data = s[index++];
 
     while(index < s.length()){
       (*this).tail_ptr->next = new node();

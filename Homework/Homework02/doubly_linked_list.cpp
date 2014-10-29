@@ -2,8 +2,7 @@
 
 using namespace std;
 
-void add_node(node*& head_ptr, node*& tail_ptr, const char& payload)
-{
+void add_node(node*& head_ptr, node*& tail_ptr, const char& payload){
 	node* added_node = new node;
 	added_node->data = payload;
 	// adding to an empty list
@@ -29,17 +28,17 @@ void add_node(node*& head_ptr, node*& tail_ptr, const char& payload)
 		{
 			// adding a node after the head node
 			node* cursor = head_ptr;
-			while (cursor != nullptr && cursor->next != nullptr 
+			while (cursor != nullptr && cursor->next != nullptr
 				&& cursor->next->data < payload)
 				cursor = cursor->next;
 			// adding to the end of the list
 			if (cursor->next == nullptr)
-			{	
+			{
 				tail_ptr = added_node;
 				cursor->next = added_node;
 				added_node->next = nullptr;
 				added_node->prev = cursor;
-			}	
+			}
 			// adding before the end of the list
 			else
 			{
@@ -50,40 +49,39 @@ void add_node(node*& head_ptr, node*& tail_ptr, const char& payload)
 				cursor->next = added_node;
 			}
 		}
-	}		
+	}
 }
 
-bool remove_node(node*& head_ptr, node*& tail_ptr, const char& target)
-{
+bool remove_node(node*& head_ptr, node*& tail_ptr, const char& target){
 	if (head_ptr == nullptr) return false;
-	
-	node* removed_node_ptr = head_ptr;	
+
+	node* removed_node_ptr = head_ptr;
 	// check if we are removing the head node
 	if (removed_node_ptr->data == target)
 	{
 		if (head_ptr->next == nullptr)
 			tail_ptr = nullptr;
 		head_ptr = head_ptr->next;
-		
+
 		if (head_ptr != nullptr)
 			head_ptr->prev = nullptr;
-		
+
 		delete removed_node_ptr;
 		removed_node_ptr = nullptr;
 		return true;
 	}
-	
+
 	// look for the node to remove after the head node
-	while (removed_node_ptr != nullptr && 
+	while (removed_node_ptr != nullptr &&
 		removed_node_ptr->next != nullptr &&
 		removed_node_ptr->next->data != target)
 		removed_node_ptr = removed_node_ptr->next;
-		
+
 	// stop here before the node to remove
 	if (removed_node_ptr != nullptr &&
 		removed_node_ptr->next != nullptr)
 	{
-		node* next_node_ptr = removed_node_ptr->next->next; 
+		node* next_node_ptr = removed_node_ptr->next->next;
 		delete removed_node_ptr->next;
 		removed_node_ptr->next = next_node_ptr;
 		// removing a node other than the tail
@@ -95,11 +93,10 @@ bool remove_node(node*& head_ptr, node*& tail_ptr, const char& target)
 		return true;
 	}
 	else
-		return false;	
+		return false;
 }
 
-bool find_list(const node* head_ptr, const char& target)
-{
+bool find_list(const node* head_ptr, const char& target){
 	const node* cursor = head_ptr;
 	while (cursor != nullptr)
 	{
@@ -110,8 +107,7 @@ bool find_list(const node* head_ptr, const char& target)
 	return false;
 }
 
-void clear_list(node*& head_ptr, node*& tail_ptr)
-{
+void clear_list(node*& head_ptr, node*& tail_ptr){
 	node* destroyed_node_ptr;
 	while (head_ptr != nullptr)
 	{
@@ -123,8 +119,7 @@ void clear_list(node*& head_ptr, node*& tail_ptr)
 
 }
 
-void print_list(const node* head_ptr)
-{
+void print_list(const node* head_ptr){
 	const node* cursor = head_ptr;
 	while (cursor != nullptr)
 	{
@@ -134,8 +129,7 @@ void print_list(const node* head_ptr)
 	cout << endl;
 }
 
-void print_list_backwards(const node* tail_ptr)
-{
+void print_list_backwards(const node* tail_ptr){
 	const node* cursor = tail_ptr;
 	while (cursor != nullptr)
 	{
@@ -145,9 +139,7 @@ void print_list_backwards(const node* tail_ptr)
 	cout << endl;
 }
 
-void copy_list(const node* source_head_ptr,
-	node*& dest_head_ptr, node*& dest_tail_ptr)
-{
+void copy_list(const node* source_head_ptr, node*& dest_head_ptr, node*& dest_tail_ptr){
 	clear_list(dest_head_ptr, dest_tail_ptr);
 	if (source_head_ptr == nullptr)
 		return;
@@ -156,7 +148,7 @@ void copy_list(const node* source_head_ptr,
 	dest_head_ptr->next = nullptr;
 	// define the prev pointer for the destination's head
 	dest_head_ptr->prev = nullptr;
-	dest_tail_ptr = dest_head_ptr; 
+	dest_tail_ptr = dest_head_ptr;
 	node* cursor = dest_head_ptr;
 	while (source_head_ptr->next != nullptr)
 	{

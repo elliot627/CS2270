@@ -36,10 +36,18 @@
 
   using namespace std;
 
+  //////////////Accessor methods//////////////
   //Getter method for use with doubly_linked_list's print_list method
-  //To be removed once cout << is overridden
   node* big_number::getHead(){
     return (*this).head_ptr;
+  }
+
+  char big_number::getHeadData(){
+    return (*this).head_ptr->data;
+  }
+
+  char big_number::getTailData(){
+    return (*this).tail_ptr->data;
   }
 
 
@@ -100,16 +108,12 @@
     else{
       //disect i's digits, from right to left and prepend to big_num
       while(i > (*this).base){
-        char temp = i % 10 + '0';
-        cout << "Adding: " << temp << endl;
-        (*this).prepend(temp);
+        (*this).prepend((i % 10) + '0');                     //adding '0' to the int results in the char version of the same number
         i /= 10;
       }
       //add final digit if it is not == 0
       if(i != 0){
-        char temp = i + '0';
-        cout << "Adding: " << temp << endl;
-        (*this).prepend(temp);
+        (*this).prepend(i + '0');
       }
     }
 

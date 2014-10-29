@@ -4,13 +4,21 @@ using namespace std;
 
 int main(){
 
-  big_number intTest(139);
+  big_number intTest(13904526);
 
   print_list(intTest.getHead());
 
+  cout << "head_ptr points to: " << intTest.getHeadData() << endl;
 
+  cout << "tail_ptr points to: " << intTest.getTailData() << endl;
 
+  big_number copyTest(intTest);
 
+  print_list(copyTest.getHead());
+
+  cout << "head_ptr points to: " << intTest.getHeadData() << endl;
+
+  cout << "tail_ptr points to: " << intTest.getTailData() << endl;
 
 
 	//~ int n1, n2;

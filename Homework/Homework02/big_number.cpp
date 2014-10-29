@@ -124,6 +124,7 @@
     (*this).head_ptr = (*this).tail_ptr = new node();
     (*this).positive = m.positive;
     (*this).base = m.base;
+    (*this).digits = m.digits;
     copy_list(m.head_ptr, (*this).head_ptr, (*this).tail_ptr);
   }
 

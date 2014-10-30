@@ -233,7 +233,13 @@
       out << cursor->data;
       cursor = cursor->next;
     }
-    out << "\ndigits: " << n.digits << "\npositive: " << n.positive << "\nhead_ptr: " << n.head_ptr->data << "\ntail_ptr: " << n.tail_ptr->data << endl;;
+    out << "\nbase: " << n.base << "\ndigits: " << n.digits << "\nhead_ptr: " << n.head_ptr->data << "\ntail_ptr: " << n.tail_ptr->data << "\npositive: ";
+    if(n.positive){
+      out << "yes\n" << endl;
+    }
+    else{
+      out << "no\n" << endl;
+    }
     return out;
   }
 

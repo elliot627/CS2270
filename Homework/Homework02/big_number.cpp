@@ -140,6 +140,8 @@
     if(s[0] == '+'){
       index++;
     }
+
+    //assign the first digit, then proceed more intelligently
     (*this).head_ptr = (*this).tail_ptr = new node();
     (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
     (*this).head_ptr->data = s[index++];
@@ -225,6 +227,13 @@
   }
 
   ostream& operator <<(ostream& out, const big_number& n){
+    out << "big_number: ";
+    node* cursor = n.head_ptr;
+    while(cursor != nullptr){
+      out << cursor->data;
+      cursor = cursor->next;
+    }
+    out << "\ndigits: " << n.digits << "\npositive: " << n.positive << "\nhead_ptr: " << n.head_ptr->data << "\ntail_ptr: " << n.tail_ptr->data << endl;;
     return out;
   }
 

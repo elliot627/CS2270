@@ -65,7 +65,7 @@
   // default constructor, creates a 0
   big_number::big_number(){
     (*this).head_ptr = (*this).tail_ptr = new node();
-    (*this).head_ptr->data = 0;
+    (*this).head_ptr->data = '0';
     (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
     (*this).digits = 1;
     (*this).positive = true;

@@ -130,6 +130,7 @@
   // create a big_number from a string
   big_number::big_number(const string& s, unsigned int b){
     (*this).digits = 0;
+    (*this).base = b;
     (*this).positive = true;
     int index = 0;
 

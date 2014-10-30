@@ -160,7 +160,7 @@
 
   // destructor
   big_number::~big_number(){
-
+	clear_list((*this).head_ptr, (*this).tail_ptr);
   }
 
   // assignment operator
@@ -227,7 +227,7 @@
     return false;
   }
 
-  ostream& operator <<(ostream& out, const big_number& n){						//TODO	Add negative sign!
+  ostream& operator <<(ostream& out, const big_number& n){
     out << "big_number: ";
 	if(!n.positive){
 		out << '-';

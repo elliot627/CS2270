@@ -20,7 +20,7 @@ class big_number
     char getHeadData();
     char getTailData();
     bool getPositive();
-    int get digits();
+    int getDigits();
 
 		// assignment operator
 		// big_number a = 98; big_number b = 0; ... b = a;

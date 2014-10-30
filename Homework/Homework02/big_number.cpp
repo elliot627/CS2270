@@ -97,7 +97,7 @@
     //if incoming int is only one digit, handle appropriately
     if(i < (*this).base){
       (*this).head_ptr->data = i;
-      (*this).digits = 1;
+      (*this).digits = 1 + '0';
     }
     else{
       //disect i's digits, from right to left and prepend to big_num

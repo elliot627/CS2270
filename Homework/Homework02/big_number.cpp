@@ -52,6 +52,7 @@
 
 
   //prepends an item to the head_ptr of this
+  //HUMANS - DO NOT USE THIS METHOD - only to be used as a helper for constructors
   void big_number::prepend(const char in){
     node* incoming = new node();
     incoming->data = in;
@@ -78,7 +79,7 @@
     //assign instance variables
     (*this).digits = 0;
     (*this).base = 10;
-    (*this).head_ptr =(*this).tail_ptr = new node();
+    (*this).head_ptr = (*this).tail_ptr = new node();
     (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
 
     //assign this.positive

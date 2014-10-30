@@ -50,6 +50,14 @@
     return (*this).tail_ptr->data;
   }
 
+  bool big_number::getPositive(){
+    return (*this).positive;
+  }
+
+  int big_number::getDigits(){
+    return (*this).digits;
+  }
+
 
   //prepends an item to the head_ptr of this
   //HUMANS - DO NOT USE THIS METHOD - only to be used as a helper for constructors

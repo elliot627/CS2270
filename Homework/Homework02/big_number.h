@@ -19,6 +19,8 @@ class big_number
     node* getHead();
     char getHeadData();
     char getTailData();
+    bool getPositive();
+    int get digits();
 
 		// assignment operator
 		// big_number a = 98; big_number b = 0; ... b = a;

@@ -4,13 +4,52 @@ using namespace std;
 
 int main(){
 
-  big_number intTest(13904526);
+  big_number intTest(123456789);
 
   print_list(intTest.getHead());
 
   cout << "head_ptr points to: " << intTest.getHeadData() << endl;
 
-  cout << "tail_ptr points to: " << intTest.getTailData() << endl;
+  cout << "tail_ptr points to: " << intTest.getTailData() << "\n" << endl;
+
+
+
+  big_number intTest2(987654321);
+
+  print_list(intTest2.getHead());
+
+  cout << "head_ptr points to: " << intTest2.getHeadData() << endl;
+
+  cout << "tail_ptr points to: " << intTest2.getTailData() << "\n"  << endl;
+
+
+  cout << "Testing int construction with: 3";
+  big_number intTest3(3);
+
+  print_list(intTest3.getHead());
+
+  cout << "head_ptr points to: " << intTest3.getHeadData() << endl;
+
+  cout << "tail_ptr points to: " << intTest3.getTailData() << "\n" << endl;
+
+
+
+  big_number defaultTest;
+
+  defaultTest.prepend('4');
+
+  print_list(defaultTest.getHead());
+
+  defaultTest.prepend('3');
+  defaultTest.prepend('2');
+  defaultTest.prepend('1');
+
+  print_list(defaultTest.getHead());
+
+  cout << "head_ptr points to: " << defaultTest.getHeadData() << endl;
+
+  cout << "tail_ptr points to: " << defaultTest.getTailData() << "\n"  << endl;
+
 
   big_number copyTest(intTest);
 
@@ -18,7 +57,17 @@ int main(){
 
   cout << "head_ptr points to: " << intTest.getHeadData() << endl;
 
-  cout << "tail_ptr points to: " << intTest.getTailData() << endl;
+  cout << "tail_ptr points to: " << intTest.getTailData() << "\n"  << endl;
+
+
+  big_number strTest("123456789", 10);
+
+  print_list(strTest.getHead());
+
+  cout << "head_ptr points to: " << strTest.getHeadData() << endl;
+
+  cout << "tail_ptr points to: " << strTest.getTailData() << "\n" << endl;
+
 
 
 	//~ int n1, n2;

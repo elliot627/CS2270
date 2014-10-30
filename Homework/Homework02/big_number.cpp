@@ -99,9 +99,6 @@
       positive = true;
     }
 
-    (*this).head_ptr = (*this).tail_ptr = new node();
-    (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
-
     //if incoming int is only one digit, handle appropriately
     if(i < (*this).base){
       (*this).head_ptr->data = i + '0';

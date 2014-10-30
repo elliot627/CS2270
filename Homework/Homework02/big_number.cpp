@@ -51,22 +51,15 @@
   }
 
 
-  //======Precondition: (*this) is not empty=======
-  //prepends an item to the head_ptr of the big_num;
-  //SHOULD ONLY BE PASSED SINGLE DIGITS! - currently only compatible with ints
+  //prepends an item to the head_ptr of this
   void big_number::prepend(const char in){
-    if((*this).head_ptr){
-      node* incoming = new node();
-      incoming->data = in;
-      incoming->prev = nullptr;
-      incoming->next = (*this).head_ptr;
-      (*this).head_ptr->prev = incoming;
-      (*this).head_ptr = incoming;
-      (*this).digits++;
-    }
-    else{
-      cout << "Sorry, head_ptr is not instantiated yet for this object..." << endl;
-    }
+    node* incoming = new node();
+    incoming->data = in;
+    incoming->prev = nullptr;
+    incoming->next = (*this).head_ptr;
+    (*this).head_ptr->prev = incoming;
+    (*this).head_ptr = incoming;
+    (*this).digits++;
   }
 
   // default constructor, creates a 0

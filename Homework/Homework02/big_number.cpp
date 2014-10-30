@@ -100,13 +100,13 @@
     }
 
     //if incoming int is only one digit, handle appropriately
-    if(i < (*this).base){
+    if((unsigned int)i < (*this).base){
       (*this).head_ptr->data = i + '0';
       (*this).digits = 1;
     }
     else{
       //disect i's digits, from right to left and prepend to big_num
-      while(i > (*this).base){
+      while((unsigned int)i > (*this).base){
         (*this).prepend((i % 10) + '0');                     //adding '0' to the int results in the char version of the same number
         i /= 10;
       }
@@ -132,7 +132,7 @@
     (*this).digits = 0;
     (*this).base = b;
     (*this).positive = true;
-    int index = 0;
+    unsigned int index = 0;
 
     if(s[0] == '-'){
       positive = false;
@@ -227,8 +227,11 @@
     return false;
   }
 
-  ostream& operator <<(ostream& out, const big_number& n){
+  ostream& operator <<(ostream& out, const big_number& n){						//TODO	Add negative sign!
     out << "big_number: ";
+	if(!n.positive){
+		out << '-';
+	}
     node* cursor = n.head_ptr;
     while(cursor != nullptr){
       out << cursor->data;

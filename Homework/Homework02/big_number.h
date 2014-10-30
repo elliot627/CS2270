@@ -12,15 +12,15 @@ class big_number
 		big_number(const big_number& m);
 		big_number(const string& s, unsigned int base);
 
-    //custom built additition method to prepend digits to big_num
-    void prepend(const char in);
+		//custom built additition method to prepend digits to big_num
+		void prepend(const char in);
 
-    //accessor  methods for data
-    node* getHead();
-    char getHeadData();
-    char getTailData();
-    bool getPositive();
-    int getDigits();
+		//accessor  methods for data
+		node* getHead();
+		char getHeadData();
+		char getTailData();
+		bool getPositive();
+		int getDigits();
 
 		// assignment operator
 		// big_number a = 98; big_number b = 0; ... b = a;

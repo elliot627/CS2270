@@ -146,6 +146,7 @@
     (*this).head_ptr = (*this).tail_ptr = new node();
     (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
     (*this).head_ptr->data = s[index++];
+    (*this).digits++;
 
     while(index < s.length()){
       (*this).tail_ptr->next = new node();
@@ -153,7 +154,7 @@
       (*this).tail_ptr->next->next = nullptr;
       (*this).tail_ptr->next->prev = tail_ptr;
       (*this).tail_ptr = tail_ptr->next;
-      digits++;
+      (*this).digits++;
     }
   }
 

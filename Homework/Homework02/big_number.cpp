@@ -171,6 +171,9 @@
     if(this == &m){return (*this);}										//avoid clearing self in accidental self-assignment
     clear_list((*this).head_ptr,(*this).tail_ptr);
     copy_list(m.head_ptr, (*this).head_ptr, (*this).tail_ptr);
+    (*this).digits = m.digits;
+    (*this).base = m.base;
+    (*this).positive = m.positive;
     return (*this);
   }
 

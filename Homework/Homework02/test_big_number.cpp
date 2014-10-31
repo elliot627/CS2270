@@ -90,7 +90,7 @@ int main(){
   if(strTest == strTest3){
 	  cout << "\t\t They are.\n" << endl;
   }
-  else{
+  if(strTest != strTest3){
 	  cout << "\t\t They are not.\n" << endl;
   }
 
@@ -103,7 +103,7 @@ int main(){
   if(firstNine == firstNineNeg){
     cout << "\t\t They are.";
   }
-  else{
+  if(firstNine != firstNineNeg){
     cout << "\t\t They are not.";
   }
 

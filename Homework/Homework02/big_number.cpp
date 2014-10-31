@@ -228,8 +228,20 @@
     return false;
   }
 
-  bool operator==(const big_number& a, const big_number& b){
-    return false;
+  bool operator==(const big_number& a, const big_number& b){													//method currently only considers EXACT matches to be equal
+	bool exactDigits = true;
+	if(a.digits == b.digits){
+		node* cursor_a = a.head_ptr;
+		node* cursor_b = b.head_ptr;
+		while(cursor_a != nullptr){																				//loop through both big_nums, comparing each digit for any discrepencies
+			if(cursor_a->data != cursor_b->data){
+				exactDigits = false;
+			}
+			cursor_a = cursor_a->next;
+			cursor_b = cursor_b->next;
+		}
+	}
+	return ((a.digits == b.digits) && (a.base == b.base) && (a.positive == b.positive) && exactDigits);			//method does not consider case of preceding zeros...yet
   }
 
   bool operator!=(const big_number& a, const big_number& b){

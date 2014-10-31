@@ -56,17 +56,17 @@ int main(){
   cout << "\t\t Testing string constructor with single negative digit...\n" << endl;
   big_number strTest4("-8", 10);
   cout << strTest4;
-  
-  
+
+
   cout << "\t\t Copying first testInt to previous number...\n" << endl;
   strTest4 = intTest;
   cout << strTest4;
-  
+
   cout << "\t\t Copying second testInt to first testInt...\n" << endl;
   intTest = intTest2;
   cout << intTest;
-  
-  
+
+
   cout << "\t\t Copying first testInt to new clone...\n" << endl;
   big_number clone;
   clone = intTest;
@@ -74,7 +74,7 @@ int main(){
   cout << intTest;
   cout << "\t\t Printing clone...\n" << endl;
   cout << clone;
-  
+
   cout << "\t\t Are the two previous big_numbers equal?\n" << endl;
   if(clone == intTest){
 	  cout << "\t\t They are.\n" << endl;
@@ -82,8 +82,8 @@ int main(){
   else{
 	  cout << "\t\t They are not.\n" << endl;
   }
-  
-  
+
+
   cout << "\t\t Are the following two big_numbers equal?\n" << endl;
   cout << strTest;
   cout << strTest3;
@@ -93,9 +93,20 @@ int main(){
   else{
 	  cout << "\t\t They are not.\n" << endl;
   }
-  
-  
-  
+
+
+  cout << "\t\t Are the two following numbers equal?\n" << endl;
+  big_number firstNine(123456789);
+  big_number firstNineNeg("-123456789",10);
+  cout << firstNine;
+  cout << firstNineNeg;
+  if(firstNine == firstNineNeg){
+    cout << "\t\t They are.";
+  }
+  else{
+    cout << "\t\t They are not.";
+  }
+
   //Temporarily abandoned due to dereferencing nightmares
   //~ cout << "\t\t Testing clear_list on first big_num...\n" << endl;
   //~ clear_list(&(intTest.getHead()), &(intTest.getTail()));

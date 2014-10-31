@@ -104,8 +104,17 @@ int main(){
     cout << "\t\t They are.";
   }
   if(firstNine != firstNineNeg){
-    cout << "\t\t They are not.";
+    cout << "\t\t They are not.\n" << endl;
   }
+
+
+  big_number zeros("000000404",10);
+  cout <<"\t\t Testing method to remove preceding zeros from a big_number...\n\n\t\tNumber before trim:\n\n" << zeros << "\t\tNumber after trim:\n" << endl;
+  zeros.killWorthlessZeros();
+  cout << zeros;
+
+
+
 
   //Temporarily abandoned due to dereferencing nightmares
   //~ cout << "\t\t Testing clear_list on first big_num...\n" << endl;

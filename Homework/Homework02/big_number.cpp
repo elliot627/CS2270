@@ -164,7 +164,10 @@
 
   // assignment operator
   big_number& big_number::operator=(const big_number& m){
-    return *this;
+    if(this == &m){return (*this);}										//avoid clearing self in accidental self-assignment
+    clear_list((*this).head_ptr,(*this).tail_ptr);
+    copy_list(m.head_ptr, (*this).head_ptr, (*this).tail_ptr);
+    return (*this);
   }
 
   // set value to original value + b; return answer in original number's base

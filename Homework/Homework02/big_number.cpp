@@ -41,7 +41,7 @@
   node* big_number::getHead(){
     return (*this).head_ptr;
   }
-  
+
   node* big_number::getTail(){
 	  return (*this).tail_ptr;
   }
@@ -62,6 +62,15 @@
     return (*this).digits;
   }
 
+  //trims preceeding zeros from (*this)
+  void big_number::killWorthlessZeros(){
+    while((*this).head_ptr != (*this).tail_ptr && (*this).head_ptr->data == '0'){
+      (*this).head_ptr = (*this).head_ptr->next;
+      delete (*this).head_ptr->prev;
+      (*this).head_ptr->prev = nullptr;
+      (*this).digits--;
+    }
+  }
 
   //prepends an item to the head_ptr of this
   //HUMANS - DO NOT USE THIS METHOD - only to be used as a helper for constructors
@@ -214,12 +223,12 @@
 
   bool operator >(const big_number& a, const big_number& b){
     if(a.base == b.base){
-		
-	}
-	else{
-		cout << "\nSorry this comparison only works on numbers of the same base right now.\n" << endl;
-		return false;	
-	}
+      return false;
+    }
+    else{
+      cout << "\nSorry this comparison only works on numbers of the same base right now.\n" << endl;
+      return false;
+    }
   }
 
   bool operator >=(const big_number& a, const big_number& b){

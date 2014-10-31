@@ -23,6 +23,9 @@ class big_number
 		bool getPositive();
 		int getDigits();
 
+    //trimming method to remove preceeding zeros
+    void killWorthlessZeros();
+
 		// assignment operator
 		// big_number a = 98; big_number b = 0; ... b = a;
 		big_number& operator=(const big_number& m);

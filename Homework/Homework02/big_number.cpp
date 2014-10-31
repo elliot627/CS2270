@@ -213,7 +213,13 @@
   }
 
   bool operator >(const big_number& a, const big_number& b){
-    return false;
+    if(a.base == b.base){
+		
+	}
+	else{
+		cout << "\nSorry this comparison only works on numbers of the same base right now.\n" << endl;
+		return false;	
+	}
   }
 
   bool operator >=(const big_number& a, const big_number& b){

@@ -245,7 +245,7 @@
   }
 
   bool operator!=(const big_number& a, const big_number& b){
-    return false;
+    return !(a == b);
   }
 
   ostream& operator <<(ostream& out, const big_number& n){

@@ -58,13 +58,42 @@ int main(){
   cout << strTest4;
   
   
-  cout << "\t\t copying first testInt to previous number...\n" << endl;
+  cout << "\t\t Copying first testInt to previous number...\n" << endl;
   strTest4 = intTest;
   cout << strTest4;
   
-  cout << "\t\t copying second testInt to first testItn...\n" << endl;
+  cout << "\t\t Copying second testInt to first testInt...\n" << endl;
   intTest = intTest2;
   cout << intTest;
+  
+  
+  cout << "\t\t Copying first testInt to new clone...\n" << endl;
+  big_number clone;
+  clone = intTest;
+  cout << "\t\t Printing intTest...\n" << endl;
+  cout << intTest;
+  cout << "\t\t Printing clone...\n" << endl;
+  cout << clone;
+  
+  cout << "\t\t Are the two previous big_numbers equal?\n" << endl;
+  if(clone == intTest){
+	  cout << "\t\t They are.\n" << endl;
+  }
+  else{
+	  cout << "\t\t They are not.\n" << endl;
+  }
+  
+  
+  cout << "\t\t Are the following two big_numbers equal?\n" << endl;
+  cout << strTest;
+  cout << strTest3;
+  if(strTest == strTest3){
+	  cout << "\t\t They are.\n" << endl;
+  }
+  else{
+	  cout << "\t\t They are not.\n" << endl;
+  }
+  
   
   
   //Temporarily abandoned due to dereferencing nightmares

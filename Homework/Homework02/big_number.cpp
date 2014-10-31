@@ -41,6 +41,10 @@
   node* big_number::getHead(){
     return (*this).head_ptr;
   }
+  
+  node* big_number::getTail(){
+	  return (*this).tail_ptr;
+  }
 
   char big_number::getHeadData(){
     return (*this).head_ptr->data;

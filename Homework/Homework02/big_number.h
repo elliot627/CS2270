@@ -17,6 +17,7 @@ class big_number
 
 		//accessor  methods for data
 		node* getHead();
+		node* getTail();
 		char getHeadData();
 		char getTailData();
 		bool getPositive();

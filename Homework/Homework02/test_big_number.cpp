@@ -53,9 +53,25 @@ int main(){
   cout << strTest3;
 
 
-  cout << "\t\t Testing string constructor with single negative digit..\n" << endl;
+  cout << "\t\t Testing string constructor with single negative digit...\n" << endl;
   big_number strTest4("-8", 10);
   cout << strTest4;
+  
+  
+  cout << "\t\t copying first testInt to previous number...\n" << endl;
+  strTest4 = intTest;
+  cout << strTest4;
+  
+  cout << "\t\t copying second testInt to first testItn...\n" << endl;
+  intTest = intTest2;
+  cout << intTest;
+  
+  
+  //Temporarily abandoned due to dereferencing nightmares
+  //~ cout << "\t\t Testing clear_list on first big_num...\n" << endl;
+  //~ clear_list(&(intTest.getHead()), &(intTest.getTail()));
+  //~ clear_list(
+  //~ cout << intTest;
 
 
 	//~ int n1, n2;

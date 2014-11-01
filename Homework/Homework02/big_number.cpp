@@ -199,7 +199,7 @@
 
 
 	//disect i's digits, from right to left and prepend to big_num
-	while((unsigned int)i > (*this).base){
+	while((unsigned int)i >= (*this).base){
 	(*this).prepend((i % 10) + '0');                     //adding '0' to the int results in the char version of the same number
 	i /= 10;
 	}

@@ -23,8 +23,8 @@ class big_number
 		bool getPositive();
 		int getDigits();
 
-    //trimming method to remove preceeding zeros
-    void killWorthlessZeros();
+		//trimming method to remove preceeding zeros
+		void killWorthlessZeros();
 
 		// assignment operator
 		// big_number a = 98; big_number b = 0; ... b = a;
@@ -75,8 +75,8 @@ class big_number
 		unsigned int digits;
 		bool positive;
 		unsigned int base;
-    //string for comparing digit values
-    string alpha = "0123456789abcdefghijklmnopqrstuvwxyz";
+		//string for comparing digit values
+		string alpha = "0123456789abcdefghijklmnopqrstuvwxyz";
 		// helper functions can go here
 
 };

@@ -114,7 +114,10 @@ int main(){
   cout << zeros;
   
   
-  cout << "\t\t Testing >operator...\n" << endl;
+  
+  
+  cout << "\t\t Testing > operator...\n" << endl;
+  
   big_number oneThou(1000);
   big_number oneThou2(1000);
   big_number twoThou(2000);
@@ -141,6 +144,55 @@ int main(){
 	  cout << "\n\t\t It is.\n" << endl;
   }
   if(!(twoThou > oneThou)){
+	  cout << "\n\t\t It is not.\n" << endl;
+  }
+  
+  cout << "\n\t\t Is the following big_num:\n" << endl;
+  cout << oneThou;
+  cout << "\t\t bigger than this big_num?\n\n";
+  cout << twoThou;
+  if(oneThou > twoThou){
+	  cout << "\n\t\t It is.\n" << endl;
+  }
+  if(!(oneThou > twoThou)){
+	  cout << "\n\t\t It is not.\n" << endl;
+  }
+  
+  
+  
+  
+  cout << "\t\t Testing >= operator...\n" << endl;
+
+  cout << "\t\t Is the following big_num:\n" << endl;
+  cout << oneThou;
+  cout << "\t\t greater than or equal to this big_num?\n\n";
+  cout << oneThou2;
+  if(oneThou >= oneThou2){
+	  cout << "\n\t\t It is.\n" << endl;
+  }
+  if(!(oneThou >= oneThou2)){
+	  cout << "\n\t\t It is not.\n" << endl;
+  }
+  
+  cout << "\n\t\t Is the following big_num:\n" << endl;
+  cout << twoThou;
+  cout << "\t\t greater than or equal to this big_num?\n\n";
+  cout << oneThou;
+  if(twoThou >= oneThou){
+	  cout << "\n\t\t It is.\n" << endl;
+  }
+  if(!(twoThou >= oneThou)){
+	  cout << "\n\t\t It is not.\n" << endl;
+  }
+  
+  cout << "\n\t\t Is the following big_num:\n" << endl;
+  cout << oneThou;
+  cout << "\t\t greater than or equal to this big_num?\n\n";
+  cout << twoThou;
+  if(oneThou >= twoThou){
+	  cout << "\n\t\t It is.\n" << endl;
+  }
+  if(!(oneThou >= twoThou)){
 	  cout << "\n\t\t It is not.\n" << endl;
   }
   

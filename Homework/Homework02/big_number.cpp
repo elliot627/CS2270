@@ -339,7 +339,7 @@
   }
 
   bool operator <(const big_number& a, const big_number& b){
-    return false;
+    return(!(a >= b));
   }
 
   bool operator <=(const big_number& a, const big_number& b){

@@ -302,10 +302,30 @@
   }
 
   bool operator >(const big_number& a, const big_number& b){
-	  a.killWorthlessZeros();
+	  a.killWorthlessZeros();											//trim preceding zeros
 	  b.killWorthlessZeros();
     if(a.base == b.base){
-      return false;
+		if(a.digits > b.digits){
+			return true;												//if a is the same base and has more digits, it must be bigger.
+		}
+		if(a.digits < b.digits){
+			return false;												//if a is the same base and has fewer digits, it must be smaller
+		}
+		else{															//if they have the same number of digits, start comparing them, starting from the left (most important)
+			node* acursor = a.head_ptr;
+			node* bcursor = b.head_ptr;
+			while(acursor != nullptr){
+				if(acursor->data > bcursor->data){
+					return true;
+				}
+				if(acursor->data < bcursor->data){
+					return false;
+				}
+				acursor = acursor->next;
+				bcursor = bcursor->next;
+			}
+			return false;												//if the above loop finishes without returning, the two numbers are therefore equal.
+		}
     }
     else{
       cout << "\nSorry this comparison only works on numbers of the same base right now.\n" << endl;
@@ -325,14 +345,14 @@
     return false;
   }
 
-  bool operator==(const big_number& a, const big_number& b){													//method currently only considers matches of the same base to be equal
-	a.killWorthlessZeros();																						//handle preceeding zeros
+  bool operator==(const big_number& a, const big_number& b){			//method currently only considers matches of the same base to be equal
+	a.killWorthlessZeros();												//handle preceeding zeros
 	b.killWorthlessZeros();
 	bool exactDigits = true;
 	if(a.digits == b.digits){
 		node* cursor_a = a.head_ptr;
 		node* cursor_b = b.head_ptr;
-		while(cursor_a != nullptr){																				//loop through both big_nums, comparing each digit for any discrepencies
+		while(cursor_a != nullptr){										//loop through both big_nums, comparing each digit for any discrepencies
 			if(cursor_a->data != cursor_b->data){
 				exactDigits = false;
 			}

@@ -75,6 +75,9 @@ int main(){
   cout << "\t\t Printing clone...\n" << endl;
   cout << clone;
 
+
+//Testing == operator...
+
   cout << "\t\t Are the two previous big_numbers equal?\n" << endl;
   if(clone == intTest){
 	  cout << "\t\t They are.\n" << endl;
@@ -114,7 +117,8 @@ int main(){
   cout << zeros;
   
   
-  
+
+//Testing > operator...
   
   cout << "\t\t Testing > operator...\n" << endl;
   
@@ -160,6 +164,7 @@ int main(){
   
   
   
+//Testing >= operator...
   
   cout << "\t\t Testing >= operator...\n" << endl;
 
@@ -198,7 +203,8 @@ int main(){
   
   
   
-  
+//  Testing < operator...
+
   cout << "\t\t Testing < operator...\n" << endl;
   
   cout << "\t\t Is the following big_num:\n" << endl;
@@ -235,6 +241,43 @@ int main(){
   }
   
   
+
+//Testing <= operator...
+  
+  cout << "\t\t Testing <= operator...\n" << endl;
+  
+  cout << "\t\t Is the following big_num:\n" << endl;
+  cout << oneThou;
+  cout << "\t\t less than or equal to this big_num?\n\n";
+  cout << oneThou2;
+  if(oneThou <= oneThou2){
+	  cout << "\n\t\t It is.\n" << endl;
+  }
+  if(!(oneThou <= oneThou2)){
+	  cout << "\n\t\t It is not.\n" << endl;
+  }
+  
+  cout << "\n\t\t Is the following big_num:\n" << endl;
+  cout << twoThou;
+  cout << "\t\t less than or equal to this big_num?\n\n";
+  cout << oneThou;
+  if(twoThou <= oneThou){
+	  cout << "\n\t\t It is.\n" << endl;
+  }
+  if(!(twoThou <= oneThou)){
+	  cout << "\n\t\t It is not.\n" << endl;
+  }
+  
+  cout << "\n\t\t Is the following big_num:\n" << endl;
+  cout << oneThou;
+  cout << "\t\t less than or equal to this big_num?\n\n";
+  cout << twoThou;
+  if(oneThou <= twoThou){
+	  cout << "\n\t\t It is.\n" << endl;
+  }
+  if(!(oneThou <= twoThou)){
+	  cout << "\n\t\t It is not.\n" << endl;
+  }
   
 
 

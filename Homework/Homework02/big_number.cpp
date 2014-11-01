@@ -207,7 +207,8 @@
 	if(i != 0){
 	(*this).prepend(i + '0');
 	}
-
+	
+	(*this).killWorthlessZeros();
   }
 
   // copy constructor, creates a deep copy of m
@@ -248,6 +249,8 @@
       (*this).tail_ptr = tail_ptr->next;
       (*this).digits++;
     }
+    
+    (*this).killWorthlessZeros();
   }
 
   // destructor
@@ -302,8 +305,6 @@
   }
 
   bool operator >(const big_number& a, const big_number& b){
-	  a.killWorthlessZeros();											//trim preceding zeros
-	  b.killWorthlessZeros();
     if(a.base == b.base){
 		if(a.digits > b.digits){
 			return true;												//if a is the same base and has more digits, it must be bigger.
@@ -345,9 +346,7 @@
     return false;
   }
 
-  bool operator==(const big_number& a, const big_number& b){			//method currently only considers matches of the same base to be equal
-	a.killWorthlessZeros();												//handle preceeding zeros
-	b.killWorthlessZeros();
+  bool operator==(const big_number& a, const big_number& b){			//method currently only considers EXACT matches to be equal
 	bool exactDigits = true;
 	if(a.digits == b.digits){
 		node* cursor_a = a.head_ptr;

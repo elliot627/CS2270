@@ -112,7 +112,40 @@ int main(){
   cout <<"\t\t Testing method to remove preceding zeros from a big_number...\n\n\t\tNumber before trim:\n\n" << zeros << "\t\tNumber after trim:\n" << endl;
   zeros.killWorthlessZeros();
   cout << zeros;
-
+  
+  
+  cout << "\t\t Testing >operator...\n" << endl;
+  big_number oneThou(1000);
+  big_number oneThou2(1000);
+  big_number twoThou(2000);
+  big_number threeThou(3000);
+  big_number fourThou(4000);
+  big_number tenThou(10000);
+  
+  cout << "\t\t Is the following big_num:\n" << endl;
+  cout << oneThou;
+  cout << "\t\t bigger than this big_num?\n\n";
+  cout << oneThou2;
+  if(oneThou > oneThou2){
+	  cout << "\n\t\t It is.\n" << endl;
+  }
+  if(!(oneThou > oneThou2)){
+	  cout << "\n\t\t It is not.\n" << endl;
+  }
+  
+  cout << "\n\t\t Is the following big_num:\n" << endl;
+  cout << twoThou;
+  cout << "\t\t bigger than this big_num?\n\n";
+  cout << oneThou;
+  if(twoThou > oneThou){
+	  cout << "\n\t\t It is.\n" << endl;
+  }
+  if(!(twoThou > oneThou)){
+	  cout << "\n\t\t It is not.\n" << endl;
+  }
+  
+  
+  
 
 
 

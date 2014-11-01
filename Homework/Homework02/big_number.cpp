@@ -302,6 +302,8 @@
   }
 
   bool operator >(const big_number& a, const big_number& b){
+	  a.killWorthlessZeros();
+	  b.killWorthlessZeros();
     if(a.base == b.base){
       return false;
     }
@@ -323,7 +325,9 @@
     return false;
   }
 
-  bool operator==(const big_number& a, const big_number& b){													//method currently only considers EXACT matches to be equal
+  bool operator==(const big_number& a, const big_number& b){													//method currently only considers matches of the same base to be equal
+	a.killWorthlessZeros();																						//handle preceeding zeros
+	b.killWorthlessZeros();
 	bool exactDigits = true;
 	if(a.digits == b.digits){
 		node* cursor_a = a.head_ptr;
@@ -336,7 +340,7 @@
 			cursor_b = cursor_b->next;
 		}
 	}
-	return ((a.digits == b.digits) && (a.base == b.base) && (a.positive == b.positive) && exactDigits);			//method does not consider case of preceding zeros...yet
+	return ((a.digits == b.digits) && (a.base == b.base) && (a.positive == b.positive) && exactDigits);
   }
 
   bool operator!=(const big_number& a, const big_number& b){

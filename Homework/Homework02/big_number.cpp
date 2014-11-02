@@ -220,7 +220,7 @@
     copy_list(m.head_ptr, (*this).head_ptr, (*this).tail_ptr);
   }
 
-  // create a big_number from a string
+  //constructor to create number from a string  
   big_number::big_number(const string& s, unsigned int b){
     (*this).digits = 0;
     (*this).base = b;

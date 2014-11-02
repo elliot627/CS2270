@@ -391,6 +391,7 @@
 	in >> incoming;
 	big_number temp(incoming, 10);
 	n = temp;
+	return in;
   }
 
   big_number operator+(const big_number& a, const big_number& b){

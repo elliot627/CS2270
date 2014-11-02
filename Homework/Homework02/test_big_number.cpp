@@ -292,7 +292,7 @@ int main(){
 	int n1, n2;
 	unsigned int base;
 	string s;
-			//~ //~
+			
 	char choice;
 	do
 	{
@@ -304,13 +304,13 @@ int main(){
 		cout << "Type '=' to test comparison operators" << endl;
 		cout << "Type 'q' to quit" << endl;
 		cin >> choice;
-	//~ //~
+	
 		if (toupper(choice) == 'D')
 		{
 			big_number a;
 			cout << "Default constructor gives " << a << endl;
 		}
-		//~ //~
+		
 		if (toupper(choice) == 'I')
 		{
 			cout << "Enter an integer: ";
@@ -318,7 +318,7 @@ int main(){
 			big_number b(n1);
 			cout << "Int constructor with " << n1 << " gives " << b << endl;
 		}
-		//~ //~
+		
 		if (toupper(choice) == 'S')
 		{
 			cout << "Enter a base: ";
@@ -329,7 +329,7 @@ int main(){
 			cout << "String constructor with " << s << " in base " <<
 				base << " gives " << e << endl;
 		}
-		//~ //~
+		
 		if (toupper(choice) == 'A')
 		{
 			big_number e(9);
@@ -340,7 +340,7 @@ int main(){
 			cout << d << " gives " << e << endl;
 			if (d == e) cout << "boo, shallow copy";
 		}
-		//~ //~
+		
 		if (choice == '>')
 		{
 			big_number n1;
@@ -348,7 +348,7 @@ int main(){
 			cin >> n1;
 			cout << "You entered " << n1 << endl;
 		}
-		//~ //~
+		
 		if (choice == '=')
 		{
 			cout << "Enter a number: ";
@@ -370,6 +370,6 @@ int main(){
 			if (f >= g)
 				cout << f << " >= " << g << endl;
 		}
-//~ //~
+
 	} while (toupper(choice) != 'Q');
 }

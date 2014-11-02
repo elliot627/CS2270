@@ -1,14 +1,14 @@
 #[Mac OSX Files]
 .DS_Store
 
-#[object files]
+#[Object files]
 *.o
 
-#[executables]
+#[Executables]
 test_big_number
 test_int_list
 singly_linked_list_reverse
 
-#[shell files]
+#[Shell files]
 *.sh
 

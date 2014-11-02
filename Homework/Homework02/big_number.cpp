@@ -367,7 +367,7 @@
   }
 
   ostream& operator <<(ostream& out, const big_number& n){
-    out << "big_number: ";
+    out << "\nbig_number: ";
 	if(!n.positive){
 		out << '-';
 	}

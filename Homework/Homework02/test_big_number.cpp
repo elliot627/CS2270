@@ -308,7 +308,7 @@ int main(){
 		if (toupper(choice) == 'D')
 		{
 			big_number a;
-			cout << "Default constructor gives " << a << endl;
+			cout << "Default constructor gives: " << a << endl;
 		}
 		
 		if (toupper(choice) == 'I')
@@ -316,7 +316,7 @@ int main(){
 			cout << "Enter an integer: ";
 			cin >> n1;
 			big_number b(n1);
-			cout << "Int constructor with " << n1 << " gives " << b << endl;
+			cout << "Int constructor with " << n1 << " gives: " << b << endl;
 		}
 		
 		if (toupper(choice) == 'S')
@@ -327,7 +327,7 @@ int main(){
 			cin >> s;
 			big_number e(s, base);
 			cout << "String constructor with " << s << " in base " <<
-				base << " gives " << e << endl;
+				base << " gives: " << e << endl;
 		}
 		
 		if (toupper(choice) == 'A')
@@ -337,16 +337,17 @@ int main(){
 			d = e;
 			cout << "Assignment of " << e << " to ";
 			++e;
-			cout << d << " gives " << e << endl;
+			cout << d << " gives: " << e << endl;
 			if (d == e) cout << "boo, shallow copy";
 		}
 		
 		if (choice == '>')
 		{
 			big_number n1;
+			cout << "big_number before input:" << n1;
 			cout << "Enter a big number: ";
 			cin >> n1;
-			cout << "You entered " << n1 << endl;
+			cout << "You just made this big_number:\n" << n1 << endl;
 		}
 		
 		if (choice == '=')

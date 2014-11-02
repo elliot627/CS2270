@@ -1,4 +1,5 @@
   #include "big_number.h"
+  #include <cctype>
 
   /* Private big_num variables
 
@@ -387,7 +388,10 @@
   }
 
   istream& operator >>(istream& in, big_number& n){
-    return in;
+	string incoming;
+	in >> incoming;
+	big_number temp(incoming, 10);
+	n = temp;
   }
 
   big_number operator+(const big_number& a, const big_number& b){

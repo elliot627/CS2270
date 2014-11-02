@@ -1,5 +1,4 @@
   #include "big_number.h"
-  #include <cctype>
 
   /* Private big_num variables
 

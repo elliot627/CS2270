@@ -207,7 +207,7 @@
 	if(i != 0){
 	(*this).prepend(i + '0');
 	}
-	
+
 	(*this).killWorthlessZeros();
   }
 
@@ -220,7 +220,7 @@
     copy_list(m.head_ptr, (*this).head_ptr, (*this).tail_ptr);
   }
 
-  //constructor to create number from a string  
+  //constructor to create number from a string
   big_number::big_number(const string& s, unsigned int b){
     (*this).digits = 0;
     (*this).base = b;
@@ -249,7 +249,7 @@
       (*this).tail_ptr = tail_ptr->next;
       (*this).digits++;
     }
-    
+
     (*this).killWorthlessZeros();
   }
 
@@ -306,27 +306,33 @@
 
   bool operator >(const big_number& a, const big_number& b){
     if(a.base == b.base){
-		if(a.digits > b.digits){
-			return true;												//if a is the same base and has more digits, it must be bigger.
-		}
-		if(a.digits < b.digits){
-			return false;												//if a is the same base and has fewer digits, it must be smaller
-		}
-		else{															//if they have the same number of digits, start comparing them, starting from the left (most important)
-			node* acursor = a.head_ptr;
-			node* bcursor = b.head_ptr;
-			while(acursor != nullptr){
-				if(acursor->data > bcursor->data){
-					return true;
-				}
-				if(acursor->data < bcursor->data){
-					return false;
-				}
-				acursor = acursor->next;
-				bcursor = bcursor->next;
-			}
-			return false;												//if the above loop finishes without returning, the two numbers are therefore equal.
-		}
+      if(a.positive && !b.positive){
+        return true;
+      }
+      if(!a.positive && b.positive){
+        return false;
+      }
+      if(a.digits > b.digits){
+        return true;												//if a is the same base and has more digits, it must be bigger.
+      }
+      if(a.digits < b.digits){
+        return false;												//if a is the same base and has fewer digits, it must be smaller
+      }
+      else{															//if they have the same number of digits, start comparing them, starting from the left (most important)
+        node* acursor = a.head_ptr;
+        node* bcursor = b.head_ptr;
+        while(acursor != nullptr){
+          if(acursor->data > bcursor->data){
+            return true;
+          }
+          if(acursor->data < bcursor->data){
+            return false;
+          }
+          acursor = acursor->next;
+          bcursor = bcursor->next;
+        }
+        return false;												//if the above loop finishes without returning, the two numbers are therefore equal.
+      }
     }
     else{
       cout << "\nSorry this comparison only works on numbers of the same base right now.\n" << endl;

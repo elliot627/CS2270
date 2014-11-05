@@ -111,24 +111,20 @@ int main(){
   }
 
 
-  big_number zeros("000000404",10);
-  cout <<"\t\t Testing method to remove preceding zeros from a big_number...\n\n\t\tNumber before trim:\n\n" << zeros << "\t\tNumber after trim:\n" << endl;
-  zeros.killWorthlessZeros();
-  cout << zeros;
-  
-  
+
+
 
 //Testing > operator...
-  
+
   cout << "\t\t Testing > operator...\n" << endl;
-  
+
   big_number oneThou(1000);
   big_number oneThou2(1000);
   big_number twoThou(2000);
   big_number threeThou(3000);
   big_number fourThou(4000);
   big_number tenThou(10000);
-  
+
   cout << "\t\t Is the following big_num:\n" << endl;
   cout << oneThou;
   cout << "\t\t bigger than this big_num?\n\n";
@@ -139,7 +135,7 @@ int main(){
   if(!(oneThou > oneThou2)){
 	  cout << "\n\t\t It is not.\n" << endl;
   }
-  
+
   cout << "\n\t\t Is the following big_num:\n" << endl;
   cout << twoThou;
   cout << "\t\t bigger than this big_num?\n\n";
@@ -150,7 +146,7 @@ int main(){
   if(!(twoThou > oneThou)){
 	  cout << "\n\t\t It is not.\n" << endl;
   }
-  
+
   cout << "\n\t\t Is the following big_num:\n" << endl;
   cout << oneThou;
   cout << "\t\t bigger than this big_num?\n\n";
@@ -161,11 +157,11 @@ int main(){
   if(!(oneThou > twoThou)){
 	  cout << "\n\t\t It is not.\n" << endl;
   }
-  
-  
-  
+
+
+
 //Testing >= operator...
-  
+
   cout << "\t\t Testing >= operator...\n" << endl;
 
   cout << "\t\t Is the following big_num:\n" << endl;
@@ -178,7 +174,7 @@ int main(){
   if(!(oneThou >= oneThou2)){
 	  cout << "\n\t\t It is not.\n" << endl;
   }
-  
+
   cout << "\n\t\t Is the following big_num:\n" << endl;
   cout << twoThou;
   cout << "\t\t greater than or equal to this big_num?\n\n";
@@ -189,7 +185,7 @@ int main(){
   if(!(twoThou >= oneThou)){
 	  cout << "\n\t\t It is not.\n" << endl;
   }
-  
+
   cout << "\n\t\t Is the following big_num:\n" << endl;
   cout << oneThou;
   cout << "\t\t greater than or equal to this big_num?\n\n";
@@ -200,13 +196,13 @@ int main(){
   if(!(oneThou >= twoThou)){
 	  cout << "\n\t\t It is not.\n" << endl;
   }
-  
-  
-  
+
+
+
 //  Testing < operator...
 
   cout << "\t\t Testing < operator...\n" << endl;
-  
+
   cout << "\t\t Is the following big_num:\n" << endl;
   cout << oneThou;
   cout << "\t\t less than this big_num?\n\n";
@@ -217,7 +213,7 @@ int main(){
   if(!(oneThou < oneThou2)){
 	  cout << "\n\t\t It is not.\n" << endl;
   }
-  
+
   cout << "\n\t\t Is the following big_num:\n" << endl;
   cout << twoThou;
   cout << "\t\t less than this big_num?\n\n";
@@ -228,7 +224,7 @@ int main(){
   if(!(twoThou < oneThou)){
 	  cout << "\n\t\t It is not.\n" << endl;
   }
-  
+
   cout << "\n\t\t Is the following big_num:\n" << endl;
   cout << oneThou;
   cout << "\t\t less than this big_num?\n\n";
@@ -239,13 +235,13 @@ int main(){
   if(!(oneThou < twoThou)){
 	  cout << "\n\t\t It is not.\n" << endl;
   }
-  
-  
+
+
 
 //Testing <= operator...
-  
+
   cout << "\t\t Testing <= operator...\n" << endl;
-  
+
   cout << "\t\t Is the following big_num:\n" << endl;
   cout << oneThou;
   cout << "\t\t less than or equal to this big_num?\n\n";
@@ -256,7 +252,7 @@ int main(){
   if(!(oneThou <= oneThou2)){
 	  cout << "\n\t\t It is not.\n" << endl;
   }
-  
+
   cout << "\n\t\t Is the following big_num:\n" << endl;
   cout << twoThou;
   cout << "\t\t less than or equal to this big_num?\n\n";
@@ -267,7 +263,7 @@ int main(){
   if(!(twoThou <= oneThou)){
 	  cout << "\n\t\t It is not.\n" << endl;
   }
-  
+
   cout << "\n\t\t Is the following big_num:\n" << endl;
   cout << oneThou;
   cout << "\t\t less than or equal to this big_num?\n\n";
@@ -278,7 +274,7 @@ int main(){
   if(!(oneThou <= twoThou)){
 	  cout << "\n\t\t It is not.\n" << endl;
   }
-  
+
 
 
 
@@ -292,7 +288,7 @@ int main(){
 	int n1, n2;
 	unsigned int base;
 	string s;
-			
+
 	char choice;
 	do
 	{
@@ -304,13 +300,13 @@ int main(){
 		cout << "Type '=' to test comparison operators" << endl;
 		cout << "Type 'q' to quit" << endl;
 		cin >> choice;
-	
+
 		if (toupper(choice) == 'D')
 		{
 			big_number a;
 			cout << "Default constructor gives: " << a << endl;
 		}
-		
+
 		if (toupper(choice) == 'I')
 		{
 			cout << "Enter an integer: ";
@@ -318,7 +314,7 @@ int main(){
 			big_number b(n1);
 			cout << "Int constructor with " << n1 << " gives: " << b << endl;
 		}
-		
+
 		if (toupper(choice) == 'S')
 		{
 			cout << "Enter a base: ";
@@ -329,7 +325,7 @@ int main(){
 			cout << "String constructor with " << s << " in base " <<
 				base << " gives: " << e << endl;
 		}
-		
+
 		if (toupper(choice) == 'A')
 		{
 			big_number e(9);
@@ -340,7 +336,7 @@ int main(){
 			cout << d << " gives: " << e << endl;
 			if (d == e) cout << "boo, shallow copy";
 		}
-		
+
 		if (choice == '>')
 		{
 			big_number n1;
@@ -349,7 +345,7 @@ int main(){
 			cin >> n1;
 			cout << "You just made this big_number:\n" << n1 << endl;
 		}
-		
+
 		if (choice == '=')
 		{
 			cout << "Enter a number: ";

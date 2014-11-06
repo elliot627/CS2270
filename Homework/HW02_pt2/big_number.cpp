@@ -87,24 +87,24 @@
   big_number& big_number::sum(const big_number& other){
     node* cursor = (*this).tail_ptr;
     const node* otherCursor = other.tail_ptr;
-    big_number result;
     unsigned int top, bottom, sum;
-    unsigned int power = 0;
+    unsigned int carry = 0;
     
     while(cursor != nullptr && otherCursor != nullptr){
       top = alpha.find(cursor->data);
       bottom = alpha.find(otherCursor->data);
-      sum = power + top + bottom;
+      sum = carry + top + bottom;
       
       if(sum >= (*this).base){                        //carrying needed...
         if(base <= 10){
-          cursor->data = (sum % base) + '0';          //if base < 10, 
+          cursor->data = (sum % base) + '0';          //if base <= 10, write in the digit using the ascii conversion for characters '0'-'9'
         }
         else{
-          cursor->data = sum + 'a' - 10;                            //NOTE: leaving off here... you need to figure out if this is a proper conversion
+          cursor->data = sum + 'a' - 10;              //if base > 10, write in digit using ascii conversion for characters 'a'-'z'
         }
+        carry = 1;                                    //add carry
       }
-      else{                                          //carrying not needed... write the sum.
+      else{                                           //carrying not needed... write in the sum.
         
       }
     }
@@ -112,76 +112,76 @@
   
   
   //helper function for adding - assumes that |*this| >= |m|
-  //~ big_number&  big_number::sum(const big_number& m){
-    //~ node* cursor = tail_ptr;
-    //~ const node* mcursor = m.tail_ptr;
-    //~ digits = 0; // a little scary, but let's roll with it anyway
-    //~ unsigned int dig1, dig2, result;
-    //~ unsigned int carry = 0;
-//~ 
-    //~ while(cursor != nullptr && mcursor != nullptr){
-      //~ dig1 = alpha.find(cursor->data);
-      //~ dig2 = alpha.find(mcursor->data);
-      //~ result = carry + dig1 + dig2;
-      //~ if(result >= base){
-        //~ if(base <= 10){
-          //~ cursor->data = ((carry + dig1 + dig2) % base) + '0';
-        //~ }
-        //~ else{
-          //~ cursor->data = result + 'a' - 10;
-        //~ }
-        //~ carry = 1;
-      //~ }
-      //~ else{
-        //~ if(base <= 10){
-          //~ cursor->data = result + '0';
-        //~ }
-        //~ else{
-          //~ cursor->data = result + 'a' - 10;
-        //~ }
-        //~ carry = 0;
-      //~ }
-      //~ cursor = cursor->prev;
-      //~ mcursor = mcursor->prev;
-      //~ ++digits;
-    //~ }
-//~ 
-    //~ while(cursor != nullptr){
-      //~ dig1 = alpha.find(cursor->data);
-      //~ result = carry + dig1 + dig2;
-      //~ if(result >= base){
-        //~ if(base <= 10){
-          //~ cursor->data = ((carry + dig1 + dig2) % base) + '0';
-        //~ }
-        //~ else{
-          //~ cursor->data = result + 'a' - 10;
-        //~ }
-        //~ carry = 1;
-      //~ }
-      //~ else{
-        //~ if(base <= 10){
-          //~ cursor->data = result + '0';
-        //~ }
-        //~ else{
-          //~ cursor->data = result + 'a' - 10;
-        //~ }
-        //~ carry = 0;
-      //~ }
-      //~ cursor = cursor->prev;
-      //~ ++digits;
-    //~ }
-//~ 
-    //~ if(carry > 0){
-    //~ head_ptr->prev = new node;
-    //~ head_ptr->prev = nullptr;
-    //~ head_ptr->prev->next = head_ptr;
-    //~ head_ptr->prev->data = '1';
-    //~ head_ptr = head_ptr->prev;
-    //~ ++digits;
-    //~ }
-//~ 
-    //~ return *this;
-  //~ }
+  big_number&  big_number::sum(const big_number& m){
+    node* cursor = tail_ptr;
+    const node* mcursor = m.tail_ptr;
+    digits = 0; // a little scary, but let's roll with it anyway
+    unsigned int dig1, dig2, result;
+    unsigned int carry = 0;
+
+    while(cursor != nullptr && mcursor != nullptr){
+      dig1 = alpha.find(cursor->data);
+      dig2 = alpha.find(mcursor->data);
+      result = carry + dig1 + dig2;
+      if(result >= base){
+        if(base <= 10){
+          cursor->data = ((carry + dig1 + dig2) % base) + '0';
+        }
+        else{
+          cursor->data = result + 'a' - 10;
+        }
+        carry = 1;
+      }
+      else{
+        if(base <= 10){
+          cursor->data = result + '0';
+        }
+        else{
+          cursor->data = result + 'a' - 10;
+        }
+        carry = 0;
+      }
+      cursor = cursor->prev;
+      mcursor = mcursor->prev;
+      ++digits;
+    }
+
+    while(cursor != nullptr){
+      dig1 = alpha.find(cursor->data);
+      result = carry + dig1 + dig2;
+      if(result >= base){
+        if(base <= 10){
+          cursor->data = ((carry + dig1 + dig2) % base) + '0';
+        }
+        else{
+          cursor->data = result + 'a' - 10;
+        }
+        carry = 1;
+      }
+      else{
+        if(base <= 10){
+          cursor->data = result + '0';
+        }
+        else{
+          cursor->data = result + 'a' - 10;
+        }
+        carry = 0;
+      }
+      cursor = cursor->prev;
+      ++digits;
+    }
+
+    if(carry > 0){
+    head_ptr->prev = new node;
+    head_ptr->prev = nullptr;
+    head_ptr->prev->next = head_ptr;
+    head_ptr->prev->data = '1';
+    head_ptr = head_ptr->prev;
+    ++digits;
+    }
+
+    return *this;
+  }
   
   
   

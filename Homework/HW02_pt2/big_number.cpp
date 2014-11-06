@@ -152,8 +152,6 @@
     return (*this);
   }
   
-    
-
   // default constructor, creates a 0
   big_number::big_number(){
     (*this).head_ptr = (*this).tail_ptr = new node();

@@ -77,6 +77,8 @@ class big_number
 		unsigned int base;
 		//string for comparing digit values
 		string alpha = "0123456789abcdefghijklmnopqrstuvwxyz";
+    
 		// helper functions can go here
+    big_number& sum(const big_number& m);
 
 };

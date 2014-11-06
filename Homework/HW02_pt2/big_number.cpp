@@ -115,10 +115,10 @@
         carry = 0;
       }
       (*this).digits++;
-      cursor = cursor->next;
-      otherCursor = otherCursor->next;
+      cursor = cursor->prev;
+      otherCursor = otherCursor->prev;
     }
-    
+
     
     return (*this)
   }

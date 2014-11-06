@@ -85,7 +85,8 @@
   //helper function for adding two bignums - assumes that |*this| >= |m|
   // -- Modifies *this, summing other into its data
   big_number& big_number::sum(const big_number& other){
-    node* cursor = (*this).tail_ptr;
+    (*this).digits = 0;                               //set *this's digits = 0, and increment each time a digit is added
+    node* cursor = (*this).tail_ptr; 
     const node* otherCursor = other.tail_ptr;
     unsigned int top, bottom, sum;
     unsigned int carry = 0;
@@ -95,7 +96,7 @@
       bottom = alpha.find(otherCursor->data);
       sum = carry + top + bottom;
       
-      if(sum >= (*this).base){                        //carrying needed...
+      if(sum >= (*this).base){                        //carrying needed... sum is greater than one digit can hold
         if(base <= 10){
           cursor->data = (sum % base) + '0';          //if base <= 10, write in the digit using the ascii conversion for characters '0'-'9'
         }
@@ -105,9 +106,21 @@
         carry = 1;                                    //add carry
       }
       else{                                           //carrying not needed... write in the sum.
-        
+        if(sum <= 10){
+          cursor->data = sum + '0';
+        }
+        else{
+          cursor->data = sum + 'a' - 10;
+        }
+        carry = 0;
       }
+      (*this).digits++;
+      cursor = cursor->next;
+      otherCursor = otherCursor->next;
     }
+    
+    
+    return (*this)
   }
   
   

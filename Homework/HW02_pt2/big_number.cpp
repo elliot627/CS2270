@@ -123,6 +123,32 @@
       otherCursor = otherCursor->prev;
     }
     
+    
+    //reaching the loop below implies that all of the digits of the 'bottom' number have been added
+    //**carry may still remain
+        
+    while(cursor != nullptr){
+      top = alpha.find(cursor->data);
+      sum = carry + top;
+      if(sum >= (*this).base){                                //if carry exists, check the sum exceeds the maximum digit value for this base
+        if((sum % (*this).base) < 10){
+          cursor->data = (sum % (*this).base) + '0';
+        }
+        else{
+          cursor->data = (sum % (*this).base) + 'a' - 10;
+        }
+      }
+      else{
+        if(sum < 10){
+          cursor->data = sum + '0';
+        }
+        else{
+          cursor->data = sum + 'a' - 10;
+        }
+      }
+      (*this).digits++;
+      cursor = cursor->prev;
+    }
     return (*this);
   }
   

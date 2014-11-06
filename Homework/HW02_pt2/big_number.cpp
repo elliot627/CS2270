@@ -85,32 +85,36 @@
   //helper function for adding two bignums - assumes that |*this| >= |m|
   // -- Modifies *this, summing other into its data
   big_number& big_number::sum(const big_number& other){
-    (*this).digits = 0;                               //set *this's digits = 0, and increment each time a digit is added
+    (*this).digits = 0;                                       //set *this's digits = 0, and increment each time a digit is added
+    
+    //pointers
     node* cursor = (*this).tail_ptr; 
     const node* otherCursor = other.tail_ptr;
+    
+    //addition variables
     unsigned int top, bottom, sum;
     unsigned int carry = 0;
     
-    while(cursor != nullptr && otherCursor != nullptr){
+    while(cursor != nullptr && otherCursor != nullptr){       //As long as both numbers still have digits to be added,
       top = alpha.find(cursor->data);
       bottom = alpha.find(otherCursor->data);
       sum = carry + top + bottom;
       
-      if(sum >= (*this).base){                        //carrying needed... sum is greater than one digit can hold
-        if(base <= 10){
-          cursor->data = (sum % base) + '0';          //if base <= 10, write in the digit using the ascii conversion for characters '0'-'9'
+      if(sum >= (*this).base){                                //carrying needed... sum is greater than one digit can hold
+        if((sum % (*this).base) < 10){                        //if remainder > 10, use conversion for ASCII characters '0'-'9'
+          cursor->data = (sum % (*this).base) + '0';
         }
-        else{
-          cursor->data = sum + 'a' - 10;              //if base > 10, write in digit using ascii conversion for characters 'a'-'z'
+        else{                                                 //otherwise, use conversion for ASCII characters 'a'-'z'
+          cursor->data = (sum % (*this).base) + 'a' - 10;
         }
-        carry = 1;                                    //add carry
+        carry = 1;                                            //add carry
       }
-      else{                                           //carrying not needed... write in the sum.
-        if(sum <= 10){
-          cursor->data = sum + '0';
+      else{                                                   //carrying not needed... write in the sum.
+        if(sum < 10){
+          cursor->data = sum + '0';                           //for digits '0'-'9'
         }
         else{
-          cursor->data = sum + 'a' - 10;
+          cursor->data = sum + 'a' - 10;                      //for digits 'a'-'z'
         }
         carry = 0;
       }
@@ -118,9 +122,8 @@
       cursor = cursor->prev;
       otherCursor = otherCursor->prev;
     }
-
     
-    return (*this)
+    return (*this);
   }
   
   

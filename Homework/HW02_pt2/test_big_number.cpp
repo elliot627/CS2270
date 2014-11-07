@@ -280,39 +280,44 @@ int main(){
 	cout << "\n\t\t Testing sum method..." << endl;
 	big_number sum1("1000000", 10);
 	big_number sum2("0234567", 10);
-	cout << "Adding: \n" << sum1 << "\nto: \n" << sum2 << endl;
+	cout << "Adding:\n" << sum1 << "\nto:\n" << sum2 << endl;
 	sum1.sum(sum2);
 	cout << "Result:\n" << sum1 << "\n\n\n";
 
 	
-	big_number sum3("1000000", 10);
-	big_number sum4("9000567", 10);
-	cout << "Adding: \n" << sum3 << "\nto: \n" << sum4 << endl;
+	big_number sum3("97", 10);
+	big_number sum4("10", 10);
+	cout << "Adding:\n" << sum3 << "\nto:\n" << sum4 << endl;
 	sum3.sum(sum4);
 	cout << "Result:\n" << sum3 << "\n\n\n";
 	
 	
 	big_number sum5("999999999999", 10);
 	big_number sum6("0001", 10);
-	cout << "Adding: \n" << sum5 << "\nto: \n" << sum6 << endl;
+	cout << "Adding:\n" << sum5 << "\nto:\n" << sum6 << endl;
 	sum5.sum(sum6);
 	cout << "Result:\n" << sum5 << "\n\n\n";
 	
 	
 	big_number sum7("793fe942", 16);
 	big_number sum8("fa1763", 16);
-	cout << "Adding: \n" << sum7 << "\nto: \n" << sum8 << endl;
+	cout << "Adding:\n" << sum7 << "\nto:\n" << sum8 << endl;
 	sum7.sum(sum8);
 	cout << "Result:\n" << sum7<< "\n\n\n";
 	
 	
-	big_number sum9("899", 10);
+	big_number sum9("999", 10);
 	big_number sum10("1", 16);
-	cout << "Adding: \n" << sum9 << "\nto: \n" << sum10 << endl;
+	cout << "Adding:\n" << sum9 << "\nto:\n" << sum10 << endl;
 	sum9.sum(sum10);
 	cout << "Result:\n" << sum9 << "\n\n\n";
 	
 	
+	big_number sum11("621ee8", 16);
+	big_number sum12("cb60a8", 16);
+	cout << "Adding:\n" << sum11 << "\nto:\n" << sum12 << endl;
+	sum11.sum(sum12);
+	cout << "Result:\n" << sum11 << "\n\n\n";
 	
 	
 //~ 

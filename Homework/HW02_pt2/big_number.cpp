@@ -102,7 +102,7 @@
       
       if(sum >= (*this).base){                                //carrying needed... sum is greater than one digit can hold
         if((sum % (*this).base) < 10){                        //if remainder > 10, use conversion for ASCII characters '0'-'9'
-          cursor->data = (sum % (*this).base) + '0';
+					cursor->data = (sum % (*this).base) + '0';
         }
         else{                                                 //otherwise, use conversion for ASCII characters 'a'-'z'
           cursor->data = (sum % (*this).base) + 'a' - 10;
@@ -119,8 +119,19 @@
         carry = 0;
       }
       (*this).digits++;
-      cursor = cursor->prev;
-      otherCursor = otherCursor->prev;
+			if(cursor->prev == nullptr && carry){
+				(*this).head_ptr = new node();
+				(*this).head_ptr->data = '1';
+				(*this).head_ptr->prev = nullptr;
+				(*this).head_ptr->next = cursor;
+				cursor->prev = (*this).head_ptr;
+				cursor = nullptr;
+				(*this).digits++;
+				break;
+			}
+			
+			cursor = cursor->prev;
+			otherCursor = otherCursor->prev;
     }
     
     
@@ -372,7 +383,7 @@
   }
 
   ostream& operator <<(ostream& out, const big_number& n){
-    out << "\nbig_number: ";
+    out << "\nbase: " << n.base << "\nbig_number: ";
 		if(!n.positive){
 			out << '-';
 		}
@@ -381,7 +392,7 @@
       out << cursor->data;
       cursor = cursor->next;
     }
-    out << "\nbase: " << n.base << "\ndigits: " << n.digits << "\nhead_ptr: " << n.head_ptr->data << "\ntail_ptr: " << n.tail_ptr->data << "\npositive: ";
+    out << "\ndigits: " << n.digits << "\nhead_ptr: " << n.head_ptr->data << "\ntail_ptr: " << n.tail_ptr->data << "\npositive: ";
     if(n.positive){
       out << "yes\n" << endl;
     }

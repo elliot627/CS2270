@@ -145,9 +145,20 @@
         else{
           cursor->data = sum + 'a' - 10;
         }
+        carry = 0;																						//carry has been satisfied
       }
       (*this).digits++;
-      cursor = cursor->prev;
+      if(cursor->prev == nullptr && carry){														//if the head of the list has been reached, and a carry still remains,
+				(*this).head_ptr = new node();
+				(*this).head_ptr->data = '1';
+				(*this).head_ptr->prev = nullptr;
+				(*this).head_ptr->next = cursor;
+				(*this).digits++;
+				cursor = nullptr;
+			}
+			else{
+				cursor = cursor->prev;
+			}
     }
     return (*this);
   }

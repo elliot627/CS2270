@@ -22,6 +22,8 @@ class big_number
 		char getTailData();
 		bool getPositive();
 		int getDigits();
+		
+		big_number& sum(const big_number& m);
 
 		//trimming method to remove preceeding zeros
 		void killWorthlessZeros();
@@ -79,6 +81,6 @@ class big_number
 		string alpha = "0123456789abcdefghijklmnopqrstuvwxyz";
     
 		// helper functions can go here
-    big_number& sum(const big_number& m);
+    
 
 };

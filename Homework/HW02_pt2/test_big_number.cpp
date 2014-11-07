@@ -278,13 +278,6 @@ int main(){
 
 
 
-  //Temporarily abandoned due to dereferencing nightmares
-  //~ cout << "\t\t Testing clear_list on first big_num...\n" << endl;
-  //~ clear_list(&(intTest.getHead()), &(intTest.getTail()));
-  //~ clear_list(
-  //~ cout << intTest;
-
-
 	int n1, n2;
 	unsigned int base;
 	string s;

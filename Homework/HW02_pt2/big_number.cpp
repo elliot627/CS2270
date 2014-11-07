@@ -373,9 +373,9 @@
 
   ostream& operator <<(ostream& out, const big_number& n){
     out << "\nbig_number: ";
-	if(!n.positive){
-		out << '-';
-	}
+		if(!n.positive){
+			out << '-';
+		}
     node* cursor = n.head_ptr;
     while(cursor != nullptr){
       out << cursor->data;

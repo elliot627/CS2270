@@ -25,6 +25,7 @@ class big_number
 		
     //temporary - move back to private methods before production
 		big_number& sum(const big_number& other);
+		big_number& diff(const big_number& other);
 
 		//trimming method to remove preceeding zeros
 		void killWorthlessZeros();
@@ -32,7 +33,6 @@ class big_number
 		// assignment operator
 		// big_number a = 98; big_number b = 0; ... b = a;
 		big_number& operator=(const big_number& m);
-    big_number& diff(const big_number& other);
 
 		// destructor (works like destr() method)
 		~big_number();

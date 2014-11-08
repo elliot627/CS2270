@@ -153,10 +153,10 @@
   }
   
   //helper function for subtracting two big_nums - assumes that |*this| > |other|
-  //-- Modifies *this, subtracting other from it's sum.
+  //-- Modifies *this, subtracting 'other' from it's sum.
   big_number& big_number::diff(const big_number& other){    
-    unsigned int top, bottom, result;
-    unsigned int borrow = 0;
+    int top, bottom, result;
+    int borrow = 0;
 
     node* cursor = (*this).tail_ptr;
     node* otherCursor = other.tail_ptr;
@@ -164,16 +164,98 @@
     
     while(cursor != nullptr){
       top = alpha.find(cursor->data);
-      while(otherCursor != nullptr){
-        bottom = alpha.find(cursor->data);
-        if(borrow){
-          borrow = 0;
-          if((top - 1) < bottom){                             //top digit is insufficient to complete subtraction, carry borrow to next digit.
-            borrow = 1;  
-          }
+      if(otherCursor != nullptr){
+        bottom = alpha.find(otherCursor->data);
+        if(borrow){																						//a borrow has occured on this digit.
+          if((top - borrow) >= bottom){													//top digit - borrow is sufficient to handle subtraction
+						borrow = 0;																					//borrow has been handled
+						result = (top - 1) - bottom;
+						if(result < 10){																		//write appropriate digit
+							cursor->data = result + '0';
+						}
+						else{
+							cursor->data = result + 'a' - 10;
+						}
+						(*this).digits++;
+					}
+					else{																									//top digit is insufficient to handle subtraction
+						result = ((*this).base + (top - borrow)) - bottom;								//complete subtraction borrowin from previous
+						if(result < 10){																			//write appropriate digit
+							cursor->data = result + '0';
+						}
+						else{
+							cursor->data = result + 'a' - 10;
+						}
+						(*this).digits++;
+					}
         }
+        else{																									//the current top digit has not been borrowed from
+					if(top >= bottom){																		//top digit is large enought to handle subtraction
+						result = (top - bottom);
+						if(result < 10){																		//write appropriate digit
+							cursor->data = result + '0';
+						}
+						else{
+							cursor->data = result + 'a' - 10;
+						}
+						(*this).digits++;
+					}
+					else{																								//the current top digit is insufficient to handle subtraction
+						borrow = 1;																					//borrow from previous digit
+						result = ((*this).base + top) - bottom;
+						if(result < 10){																		//write appropriate digit
+							cursor->data = result + '0';
+						}
+						else{
+							cursor->data = result + 'a' - 10;
+						}
+						(*this).digits++;
+					}
+				}
       }
+      //reaching this else implies there are no more bottom digits
+      else{
+				if(borrow){
+					if((top - borrow) > 0){															//top is sufficient to satisfy the borrow
+						borrow = 0;																					//borrow has been handled
+						result = (top - 1);
+						if(result < 10){																		//write appropriate digit
+							cursor->data = result + '0';
+						}
+						else{
+							cursor->data = result + 'a' - 10;
+						}
+						(*this).digits++;
+					}
+					else{																								//top is not sufficient to satisy the borrow
+						if(cursor->prev != nullptr){
+							result = ((*this).base - borrow);
+							if(result < 10){																	//write appropriate digit
+								cursor->data = result + '0';
+							}
+							else{
+								cursor->data = result + 'a' - 10;
+							}
+							(*this).digits++;
+						}
+						else{
+							delete head_ptr;
+							head_ptr = cursor;
+							head_ptr->prev = nullptr;
+						}
+					}
+				}
+				else{
+					(*this).digits++;																	//no remaining digits to subtract, no borrows to handle, finish incrementing digits until head_ptr reached.
+				}
+			}
+      
+      cursor = cursor->prev;
+      if(otherCursor != nullptr){
+				otherCursor = otherCursor->prev;
+			}
     }
+		return (*this);
   }
     
   // default constructor, creates a 0

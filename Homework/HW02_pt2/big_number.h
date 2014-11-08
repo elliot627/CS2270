@@ -83,6 +83,7 @@ class big_number
     
 		// helper functions can go here
     //~ big_number& sum(const big_number& m);
+    big_number& diff(const big_number& other);
     
 
 };

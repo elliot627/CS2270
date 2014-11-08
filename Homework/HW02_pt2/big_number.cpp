@@ -151,6 +151,30 @@
     }
     return (*this);
   }
+  
+  //helper function for subtracting two big_nums - assumes that |*this| > |other|
+  //-- Modifies *this, subtracting other from it's sum.
+  big_number& big_number::diff(const big_number& other){    
+    unsigned int top, bottom, result;
+    unsigned int borrow = 0;
+
+    node* cursor = (*this).tail_ptr;
+    node* otherCursor = other.tail_ptr;
+    (*this).digits = 0;
+    
+    while(cursor != nullptr){
+      top = alpha.find(cursor->data);
+      while(otherCursor != nullptr){
+        bottom = alpha.find(cursor->data);
+        if(borrow){
+          borrow = 0;
+          if((top - 1) < bottom){                             //top digit is insufficient to complete subtraction, carry borrow to next digit.
+            borrow = 1;  
+          }
+        }
+      }
+    }
+  }
     
   // default constructor, creates a 0
   big_number::big_number(){

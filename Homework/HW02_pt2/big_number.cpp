@@ -9,28 +9,6 @@
    *  unsigned int base
   */
 
-
-  /*
-   *int constuctor code from class on Monday:
-   *
-   *  while(i < 0){
-   *    if(head_ptr != nullptr){
-   *      head_ptr->prev = new node();
-   *      head_ptr->prev->data = (i % 10) + '0';
-   *      head_ptr->prev->next = head_ptr;
-   *      head_ptr = head_ptr->prev;
-   *    }
-   *    else{
-   *      head_ptr = new node();
-   *      head_ptr->data = (i % 10) + '0';
-   *      tail_ptr = head_ptr;
-   *      .....?
-   *    }
-   *  }
-   *
-   *
-  */
-
   using namespace std;
 
   //////////////Accessor methods//////////////

@@ -61,7 +61,7 @@
   }
   
   //helper function for adding two bignums - assumes that |*this| >= |m|
-  // -- Modifies *this, summing other into its data
+  // -- Modifies *this, summing 'other' into its data
   big_number& big_number::sum(const big_number& other){
     (*this).digits = 0;                                       //set *this's digits = 0, and increment each time a digit is added
     

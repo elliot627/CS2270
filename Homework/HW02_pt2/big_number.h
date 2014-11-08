@@ -23,6 +23,7 @@ class big_number
 		bool getPositive();
 		int getDigits();
 		
+    //temporary - move back to private methods before production
 		big_number& sum(const big_number& m);
 
 		//trimming method to remove preceeding zeros
@@ -81,6 +82,7 @@ class big_number
 		string alpha = "0123456789abcdefghijklmnopqrstuvwxyz";
     
 		// helper functions can go here
+    //~ big_number& sum(const big_number& m);
     
 
 };

@@ -515,38 +515,41 @@
   }
 
   bool operator >(const big_number& a, const big_number& b){
-    if(a.base == b.base){
-      if(a.positive && !b.positive){
-        return true;
-      }
-      if(!a.positive && b.positive){
-        return false;
-      }
-      if(a.digits > b.digits){
-        return true;												//if a is the same base and has more digits, it must be bigger.
-      }
-      if(a.digits < b.digits){
-        return false;												//if a is the same base and has fewer digits, it must be smaller
-      }
-      else{															//if they have the same number of digits, start comparing them, starting from the left (most important)
-        node* acursor = a.head_ptr;
-        node* bcursor = b.head_ptr;
-        while(acursor != nullptr){
-          if(acursor->data > bcursor->data){
-            return true;
-          }
-          if(acursor->data < bcursor->data){
-            return false;
-          }
-          acursor = acursor->next;
-          bcursor = bcursor->next;
-        }
-        return false;												//if the above loop finishes without returning, the two numbers are therefore equal.
-      }
-    }
-    else{
-      cout << "\nSorry this comparison only works on numbers of the same base right now.\n" << endl;
-      return false;
+		//make copy to allow conversion
+    big_number bb(b);
+    
+    //convert base if different
+    if(a.base != bb.base){
+			big_number temp(bb, a.base);
+			bb = temp;
+		}
+    
+		if(a.positive && !bb.positive){
+			return true;
+		}
+		if(!a.positive && bb.positive){
+			return false;
+		}
+		if(a.digits > bb.digits){
+			return true;												//if a is the same base and has more digits, it must be bigger.
+		}
+		if(a.digits < bb.digits){
+			return false;												//if a is the same base and has fewer digits, it must be smaller
+		}
+		else{															//if they have the same number of digits, start comparing them, starting from the left (most important)
+			node* acursor = a.head_ptr;
+			node* bcursor = bb.head_ptr;
+			while(acursor != nullptr){
+				if(acursor->data > bcursor->data){
+					return true;
+				}
+				if(acursor->data < bcursor->data){
+					return false;
+				}
+				acursor = acursor->next;
+				bcursor = bcursor->next;
+			}
+			return false;												//if the above loop finishes without returning, the two numbers are therefore equal.
     }
   }
 

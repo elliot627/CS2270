@@ -347,6 +347,47 @@
 
     (*this).killWorthlessZeros();
   }
+  
+  // conversion constructor; convert m to a different base
+	big_number::big_number(const big_number& m, unsigned int b){
+		head_ptr = tail_ptr = nullptr;
+		positive = m.positive;
+		
+		big_number zero;
+		zero.base = b;
+		*this = zero;
+		unsigned int digit;
+		
+		big_number* values = new big_number[m.base + 1];
+		
+		big_number j = 0;
+		j.base = b;
+		
+		for (unsigned int i = 0; i <= m.base; ++i){
+			values[i] = j;
+			++j;
+		}
+		
+		for (const node* cursor = m.head_ptr; cursor != nullptr; cursor = cursor->next){
+			if (isdigit(cursor->data)){
+				digit = cursor->data - '0';
+			}
+			else{
+				digit = cursor->data - 'a' + 10;
+			}
+			big_number intermed = values[m.base] * (*this);
+			if (intermed > zero){
+				intermed.sum(values[digit]);
+			}
+			else{
+				big_number temp(intermed);
+				intermed = values[digit];
+				intermed += temp;
+			}
+			*this = intermed;
+		}
+		delete [] values;
+	}
 
   // destructor
   big_number::~big_number(){

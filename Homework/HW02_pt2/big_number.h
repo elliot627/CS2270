@@ -54,6 +54,9 @@ class big_number
 		// input and output operators
 		friend std::ostream& operator<<(std::ostream& os, const big_number& bignum);
 		friend std::istream& operator>>(std::istream& is, big_number& bignum);
+		
+		//friend for comparing big_numbers
+		friend int cmp(const big_number& a, const big_number& b);
 
 		// arithmetic operators
 		friend big_number operator+(const big_number& a, const big_number& b);

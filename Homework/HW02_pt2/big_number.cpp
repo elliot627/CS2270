@@ -288,22 +288,22 @@
     }
 
     //assign the first digit
-	(*this).tail_ptr->data = ((i % 10) + '0');
-	i /= 10;
-	(*this).digits = 1;
+		(*this).tail_ptr->data = ((i % 10) + '0');
+		i /= 10;
+		(*this).digits = 1;
 
 
-	//disect i's digits, from right to left and prepend to big_num
-	while((unsigned int)i >= (*this).base){
-	(*this).prepend((i % 10) + '0');                     //adding '0' to the int results in the char version of the same number
-	i /= 10;
-	}
-	//add final digit if it is not == 0
-	if(i != 0){
-	(*this).prepend(i + '0');
-	}
+		//disect i's digits, from right to left and prepend to big_num
+		while((unsigned int)i >= (*this).base){
+			(*this).prepend((i % 10) + '0');                     //adding '0' to the int results in the char version of the same number
+			i /= 10;
+		}
+		//add final digit if it is not == 0
+		if(i != 0){
+			(*this).prepend(i + '0');
+		}
 
-	(*this).killWorthlessZeros();
+		(*this).killWorthlessZeros();
   }
 
   // copy constructor, creates a deep copy of m

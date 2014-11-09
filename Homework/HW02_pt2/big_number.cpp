@@ -269,6 +269,7 @@
 				otherCursor = otherCursor->prev;
 			}
     }
+    (*this).killWorthlessZeros();
 		return (*this);
   }
     

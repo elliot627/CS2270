@@ -72,6 +72,21 @@
 			return -1;
 		}
 	}
+	
+	// friend for comparing digits
+	int cmp(const big_number& a, const big_number& b){
+		if (a.digits > b.digits) return 1;
+		if (a.digits < b.digits) return -1;
+		const node* a_cursor;
+		const node* b_cursor;
+		for (a_cursor = a.head_ptr, b_cursor = b.head_ptr; 
+			b_cursor != nullptr && a_cursor->data == b_cursor->data; 
+			b_cursor = b_cursor->next, a_cursor = a_cursor->next)
+			;
+		if (a_cursor == nullptr) return 0;
+		if (a_cursor->data > b_cursor->data) return 1;
+		return -1;
+	}
   
   //helper function for adding two bignums - assumes that |*this| >= |m|
   // -- Modifies *this, summing 'other' into its data
@@ -513,7 +528,8 @@
   big_number& big_number::operator--(){
     return *this;
   }
-
+	
+	//my operator > code
   bool operator >(const big_number& a, const big_number& b){
 		//make copy to allow conversion
     big_number bb(b);
@@ -552,6 +568,20 @@
 			return false;												//if the above loop finishes without returning, the two numbers are therefore equal.
     }
   }
+  //~ 
+  //~ //solution operator code
+  //~ bool operator >(const big_number& a, const big_number& b){
+	//~ //	big_number temp_b(b, a.base);
+		//~ if (a.positive && !b.positive)
+			//~ return true;
+		//~ if (!a.positive && b.positive)
+			//~ return false;
+		//~ if (a.positive)
+			//~ return cmp(a, b) > 0;
+		//~ else
+			//~ return cmp(a, b) < 0;
+		//~ return false;
+	//~ }
 
   bool operator >=(const big_number& a, const big_number& b){
     return((a > b) || (a == b));

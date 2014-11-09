@@ -28,7 +28,7 @@ class big_number
 		void killWorthlessZeros();
 		
 		//method for determining if (*this) big num has more digits than other
-		bool hasMoreDigitsThan(const big_number& other);
+		int hasMoreDigitsThan(const big_number& other);
 
 		// assignment operator
 		// big_number a = 98; big_number b = 0; ... b = a;

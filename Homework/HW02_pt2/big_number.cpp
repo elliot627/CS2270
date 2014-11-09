@@ -74,19 +74,20 @@
 	}
 	
 	// friend for comparing digits
-	int cmp(const big_number& a, const big_number& b){
-		if (a.digits > b.digits) return 1;
-		if (a.digits < b.digits) return -1;
-		const node* a_cursor;
-		const node* b_cursor;
-		for (a_cursor = a.head_ptr, b_cursor = b.head_ptr; 
-			b_cursor != nullptr && a_cursor->data == b_cursor->data; 
-			b_cursor = b_cursor->next, a_cursor = a_cursor->next)
-			;
-		if (a_cursor == nullptr) return 0;
-		if (a_cursor->data > b_cursor->data) return 1;
-		return -1;
-	}
+	// - from solution code
+	//~ int cmp(const big_number& a, const big_number& b){
+		//~ if (a.digits > b.digits) return 1;
+		//~ if (a.digits < b.digits) return -1;
+		//~ const node* a_cursor;
+		//~ const node* b_cursor;
+		//~ for (a_cursor = a.head_ptr, b_cursor = b.head_ptr; 
+			//~ b_cursor != nullptr && a_cursor->data == b_cursor->data; 
+			//~ b_cursor = b_cursor->next, a_cursor = a_cursor->next)
+			//~ ;
+		//~ if (a_cursor == nullptr) return 0;
+		//~ if (a_cursor->data > b_cursor->data) return 1;
+		//~ return -1;
+	//~ }
   
   //helper function for adding two bignums - assumes that |*this| >= |m|
   // -- Modifies *this, summing 'other' into its data
@@ -478,7 +479,12 @@
   }
 
   // set value to original value * b; return answer in original number's base
-  big_number& big_number::operator*= (const big_number& b){
+  big_number& big_number::operator*= (const big_number& other){
+		//~ node* cursor = (*this).tail_ptr;
+		//~ node* otherCursor = other.tail_ptr;																		//UNFINISHED :'(
+		//~ 	
+		//~ while(
+		
     return *this;
   }
 

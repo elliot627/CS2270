@@ -239,9 +239,10 @@
 							(*this).digits++;
 						}
 						else{
-							delete head_ptr;
-							head_ptr = cursor;
-							head_ptr->prev = nullptr;
+							node* first = (*this).head_ptr;
+							(*this).head_ptr = (*this).head_ptr->next;
+							(*this).head_ptr->prev = nullptr;
+							delete first;
 						}
 					}
 				}

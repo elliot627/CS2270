@@ -461,7 +461,37 @@
 
   // set value to original value - b; return answer in original number's base
   big_number& big_number::operator-= (const big_number& b){
-    return *this;
+    
+    big_number thiss((*this));																					//make copies to play with
+    big_number other(b);
+    
+    if(thiss.base != other.base){																				//ensure same bases
+			big_number temp(other, thiss.base);
+			other = temp;
+		}
+		//compute difference of two numbers if they are both positive or negative
+		if(thiss.positive == other.positive){
+			if(thiss.hasMoreDigitsThan(other)){
+				thiss.diff(other);
+				(*this) = thiss;
+			}
+			else{
+				other.diff(thiss);
+				(*this) = other;
+			}
+		}
+		//sum big_numbers if both positive or both negative
+		else{
+			if(thiss.hasMoreDigitsThan(other)){
+				thiss.sum(other);
+				(*this) = thiss;
+			}
+			else{
+				other.sum((*this));
+				(*this) = other;
+			}
+		}
+    return (*this);
   }
 
   // set value to original value / b; return answer in original number's base

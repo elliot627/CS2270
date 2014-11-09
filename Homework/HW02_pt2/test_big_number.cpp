@@ -360,7 +360,7 @@ int main(){
 	
 	big_number diff13("90003", 10);
 	big_number diff14("4", 10);
-	cout << "Subtracting:\n" << diff14 << "\nform:\n" << diff13 << endl;
+	cout << "Subtracting:\n" << diff14 << "\nfrom:\n" << diff13 << endl;
 	diff13.diff(diff14);
 	cout << "Result:\n" << diff13 << "\n\n\n";
 	

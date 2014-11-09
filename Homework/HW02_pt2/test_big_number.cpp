@@ -330,7 +330,7 @@ int main(){
 	
 	big_number diff3("1000", 10);
 	big_number diff4("0004", 10);
-	cout << "Subtracting:\n" << diff2 << "\nfrom:\n" << diff3 << endl;
+	cout << "Subtracting:\n" << diff4 << "\nfrom:\n" << diff3 << endl;
 	diff3.diff(diff4);
 	cout << "Result:\n" << diff3 << "\n\n\n";
 	

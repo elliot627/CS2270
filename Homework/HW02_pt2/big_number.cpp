@@ -617,7 +617,8 @@
   }
 
   big_number operator-(const big_number& a, const big_number& b){
-    big_number answer;
+    big_number answer(a);
+    answer -= b;
     return answer;
   }
 

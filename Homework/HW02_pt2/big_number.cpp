@@ -60,6 +60,19 @@
     (*this).digits++;
   }
   
+  //Determine whether (*this) has more digits than 'other'
+  int big_number::hasMoreDigitsThan(const big_number& other){
+		if((*this).digits > other.digits){
+			return 1;
+		}
+		if((*this).digits == other.digits){
+			return 0;
+		}
+		else{
+			return -1;
+		}
+	}
+  
   //helper function for adding two bignums - assumes that |*this| >= |m|
   // -- Modifies *this, summing 'other' into its data
   big_number& big_number::sum(const big_number& other){
@@ -407,12 +420,7 @@
 
   // set value to original value + b; return answer in original number's base
   big_number& big_number::operator+= (const big_number& b){
-    return *this;
-  }
-
-  // set value to original value * b; return answer in original number's base
-  big_number& big_number::operator*= (const big_number& b){
-    return *this;
+		return *this;
   }
 
   // set value to original value - b; return answer in original number's base

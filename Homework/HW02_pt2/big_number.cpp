@@ -362,7 +362,7 @@
 		
 		//check if any incoming digits exceed the given base
 		if(alpha.find(s[index]) >= b){
-			(*this).base = alpha.find(s[index]);
+			(*this).base = (alpha.find(s[index]) + 1);
 		}
 		
     //assign the first digit, then proceed more intelligently
@@ -373,7 +373,7 @@
 
     while(index < s.length()){
 			if(alpha.find(s[index]) >= b){
-				(*this).base = alpha.find(s[index]);
+				(*this).base = (alpha.find(s[index]) + 1);
 			}
       (*this).tail_ptr->next = new node();
       (*this).tail_ptr->next->data = s[index++];

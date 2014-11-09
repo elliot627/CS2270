@@ -529,6 +529,7 @@
 
   // prefix increment
   big_number& big_number::operator++(){
+		(*this) += 1;
     return *this;
   }
 

@@ -420,7 +420,42 @@
 
   // set value to original value + b; return answer in original number's base
   big_number& big_number::operator+= (const big_number& b){
-		return *this;
+		
+		big_number thiss((*this));																								//make copies
+		big_number other(b);
+		
+		if(thiss.base != other.base){																							//ensure same bases
+			big_number temp(other, thiss.base);
+			other = temp;
+		}
+		//sum big_numbers if both negative or both positive
+		if(thiss.positive == other.positive){
+			if(thiss.hasMoreDigitsThan(other) == 1){
+				thiss.sum(other);
+				(*this) = thiss;
+			}
+			else{
+				other.sum(thiss);
+				(*this) = other;
+			}
+		}
+		//compute difference between big_numbers otherwise
+		else{
+			if(thiss.hasMoreDigitsThan(other) == 1){
+				thiss.diff(other);
+				(*this) = thiss;
+			}
+			else{
+				other.diff(thiss);
+				(*this) = other;
+			}
+		}
+		return (*this);
+  }
+
+  // set value to original value * b; return answer in original number's base
+  big_number& big_number::operator*= (const big_number& b){
+    return *this;
   }
 
   // set value to original value - b; return answer in original number's base

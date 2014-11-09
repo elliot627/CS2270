@@ -275,100 +275,102 @@ int main(){
 	  cout << "\n\t\t It is not.\n" << endl;
   }
   
-  
-//Testing sum method
-	cout << "\n\t\t Testing sum method..." << endl;
-	big_number sum1("1000000", 10);
-	big_number sum2("0234567", 10);
-	cout << "Adding:\n" << sum1 << "\nto:\n" << sum2 << endl;
-	sum1.sum(sum2);
-	cout << "Result:\n" << sum1 << "\n\n\n";
 
-	
-	big_number sum3("97", 10);
-	big_number sum4("10", 10);
-	cout << "Adding:\n" << sum3 << "\nto:\n" << sum4 << endl;
-	sum3.sum(sum4);
-	cout << "Result:\n" << sum3 << "\n\n\n";
-	
-	
-	big_number sum5("999999999999", 10);
-	big_number sum6("0001", 10);
-	cout << "Adding:\n" << sum5 << "\nto:\n" << sum6 << endl;
-	sum5.sum(sum6);
-	cout << "Result:\n" << sum5 << "\n\n\n";
-	
-	
-	big_number sum7("793fe942", 16);
-	big_number sum8("fa1763", 16);
-	cout << "Adding:\n" << sum7 << "\nto:\n" << sum8 << endl;
-	sum7.sum(sum8);
-	cout << "Result:\n" << sum7<< "\n\n\n";
-	
-	
-	big_number sum9("999", 10);
-	big_number sum10("1", 16);
-	cout << "Adding:\n" << sum9 << "\nto:\n" << sum10 << endl;
-	sum9.sum(sum10);
-	cout << "Result:\n" << sum9 << "\n\n\n";
-	
-	
-	big_number sum11("621ee8", 16);
-	big_number sum12("cb60a8", 16);
-	cout << "Adding:\n" << sum11 << "\nto:\n" << sum12 << endl;
-	sum11.sum(sum12);
-	cout << "Result:\n" << sum11 << "\n\n\n";
-	
-	
-//Testing diff method
-	cout << "\t\t\t Testing diff method...\n" << endl;
-	big_number diff1("5432", 10);
-	big_number diff2("4321", 10);
-	cout << "Subtracting:\n" << diff2 << "\nfrom:\n" << diff1 << endl;
-	diff1.diff(diff2);
-	cout << "Result:\n" << diff1 << "\n\n\n";
-	
-	big_number diff3("1000", 10);
-	big_number diff4("0004", 10);
-	cout << "Subtracting:\n" << diff4 << "\nfrom:\n" << diff3 << endl;
-	diff3.diff(diff4);
-	cout << "Result:\n" << diff3 << "\n\n\n";
-	
-	big_number diff5("100000000000000000", 10);
-	big_number diff6("1", 10);
-	cout << "Subtracting:\n" << diff6 << "\nfrom:\n" << diff5 << endl;
-	diff5.diff(diff6);
-	cout << "Result:\n" << diff5 << "\n\n\n";
-	
-	big_number diff7("77231", 10);
-	big_number diff8("04576", 10);
-	cout << "Subtracting:\n" << diff8 << "\nfrom:\n" << diff7 << endl;
-	diff7.diff(diff8);
-	cout << "Result:\n" << diff7 << "\n\n\n";
-	
-	big_number diff9("fb3cf2914", 16);
-	big_number diff10("af39642", 16);
-	cout << "Subtracting:\n" << diff10 << "\nfrom:\n" << diff9 << endl;
-	diff9.diff(diff10);
-	cout << "Result:\n" << diff9 << "\n\n\n";
-	
-	big_number diff11("21992", 10);
-	big_number diff12("7680", 10);
-	cout << "Subtracting:\n" << diff12 << "\nfrom:\n" << diff11 << endl;
-	diff11.diff(diff12);
-	cout << "Result:\n" << diff11 << "\n\n\n";
-	
-	big_number diff13("90003", 10);
-	big_number diff14("4", 10);
-	cout << "Subtracting:\n" << diff14 << "\nfrom:\n" << diff13 << endl;
-	diff13.diff(diff14);
-	cout << "Result:\n" << diff13 << "\n\n\n";
-	
-	big_number diff15("zlpf34876", 36);
-	big_number diff16("32zx2i63n", 36);
-	cout << "Subtracting:\n" << diff16 << "\nfrom:\n" << diff15 << endl;
-	diff15.diff(diff16);
-	cout << "Result:\n" << diff15 << "\n\n\n";
+	//diff and sum tests are commented out as these methods are now private
+ 
+//~ //Testing sum method
+	//~ cout << "\n\t\t Testing sum method..." << endl;
+	//~ big_number sum1("1000000", 10);
+	//~ big_number sum2("0234567", 10);
+	//~ cout << "Adding:\n" << sum1 << "\nto:\n" << sum2 << endl;
+	//~ sum1.sum(sum2);
+	//~ cout << "Result:\n" << sum1 << "\n\n\n";
+//~ 
+	//~ 
+	//~ big_number sum3("97", 10);
+	//~ big_number sum4("10", 10);
+	//~ cout << "Adding:\n" << sum3 << "\nto:\n" << sum4 << endl;
+	//~ sum3.sum(sum4);
+	//~ cout << "Result:\n" << sum3 << "\n\n\n";
+	//~ 
+	//~ 
+	//~ big_number sum5("999999999999", 10);
+	//~ big_number sum6("0001", 10);
+	//~ cout << "Adding:\n" << sum5 << "\nto:\n" << sum6 << endl;
+	//~ sum5.sum(sum6);
+	//~ cout << "Result:\n" << sum5 << "\n\n\n";
+	//~ 
+	//~ 
+	//~ big_number sum7("793fe942", 16);
+	//~ big_number sum8("fa1763", 16);
+	//~ cout << "Adding:\n" << sum7 << "\nto:\n" << sum8 << endl;
+	//~ sum7.sum(sum8);
+	//~ cout << "Result:\n" << sum7<< "\n\n\n";
+	//~ 
+	//~ 
+	//~ big_number sum9("999", 10);
+	//~ big_number sum10("1", 16);
+	//~ cout << "Adding:\n" << sum9 << "\nto:\n" << sum10 << endl;
+	//~ sum9.sum(sum10);
+	//~ cout << "Result:\n" << sum9 << "\n\n\n";
+	//~ 
+	//~ 
+	//~ big_number sum11("621ee8", 16);
+	//~ big_number sum12("cb60a8", 16);
+	//~ cout << "Adding:\n" << sum11 << "\nto:\n" << sum12 << endl;
+	//~ sum11.sum(sum12);
+	//~ cout << "Result:\n" << sum11 << "\n\n\n";
+	//~ 
+	//~ 
+//~ //Testing diff method
+	//~ cout << "\t\t\t Testing diff method...\n" << endl;
+	//~ big_number diff1("5432", 10);
+	//~ big_number diff2("4321", 10);
+	//~ cout << "Subtracting:\n" << diff2 << "\nfrom:\n" << diff1 << endl;
+	//~ diff1.diff(diff2);
+	//~ cout << "Result:\n" << diff1 << "\n\n\n";
+	//~ 
+	//~ big_number diff3("1000", 10);
+	//~ big_number diff4("0004", 10);
+	//~ cout << "Subtracting:\n" << diff4 << "\nfrom:\n" << diff3 << endl;
+	//~ diff3.diff(diff4);
+	//~ cout << "Result:\n" << diff3 << "\n\n\n";
+	//~ 
+	//~ big_number diff5("100000000000000000", 10);
+	//~ big_number diff6("1", 10);
+	//~ cout << "Subtracting:\n" << diff6 << "\nfrom:\n" << diff5 << endl;
+	//~ diff5.diff(diff6);
+	//~ cout << "Result:\n" << diff5 << "\n\n\n";
+	//~ 
+	//~ big_number diff7("77231", 10);
+	//~ big_number diff8("04576", 10);
+	//~ cout << "Subtracting:\n" << diff8 << "\nfrom:\n" << diff7 << endl;
+	//~ diff7.diff(diff8);
+	//~ cout << "Result:\n" << diff7 << "\n\n\n";
+	//~ 
+	//~ big_number diff9("fb3cf2914", 16);
+	//~ big_number diff10("af39642", 16);
+	//~ cout << "Subtracting:\n" << diff10 << "\nfrom:\n" << diff9 << endl;
+	//~ diff9.diff(diff10);
+	//~ cout << "Result:\n" << diff9 << "\n\n\n";
+	//~ 
+	//~ big_number diff11("21992", 10);
+	//~ big_number diff12("7680", 10);
+	//~ cout << "Subtracting:\n" << diff12 << "\nfrom:\n" << diff11 << endl;
+	//~ diff11.diff(diff12);
+	//~ cout << "Result:\n" << diff11 << "\n\n\n";
+	//~ 
+	//~ big_number diff13("90003", 10);
+	//~ big_number diff14("4", 10);
+	//~ cout << "Subtracting:\n" << diff14 << "\nfrom:\n" << diff13 << endl;
+	//~ diff13.diff(diff14);
+	//~ cout << "Result:\n" << diff13 << "\n\n\n";
+	//~ 
+	//~ big_number diff15("zlpf34876", 36);
+	//~ big_number diff16("32zx2i63n", 36);
+	//~ cout << "Subtracting:\n" << diff16 << "\nfrom:\n" << diff15 << endl;
+	//~ diff15.diff(diff16);
+	//~ cout << "Result:\n" << diff15 << "\n\n\n";
 	
 	
 	

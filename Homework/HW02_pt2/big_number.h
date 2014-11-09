@@ -11,6 +11,7 @@ class big_number
 		big_number(int i);
 		big_number(const big_number& m);
 		big_number(const string& s, unsigned int base);
+		big_number(const big_number& m, unsigned int b);
 
 		//custom built additition method to prepend digits to big_num
 		void prepend(const char in);

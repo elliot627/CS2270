@@ -22,10 +22,6 @@ class big_number
 		char getTailData();
 		bool getPositive();
 		int getDigits();
-		
-    //temporary - move back to private methods before production
-		big_number& sum(const big_number& other);
-		big_number& diff(const big_number& other);
 
 		//trimming method to remove preceeding zeros
 		void killWorthlessZeros();
@@ -83,8 +79,8 @@ class big_number
 		string alpha = "0123456789abcdefghijklmnopqrstuvwxyz";
     
 		// helper functions can go here
-    //~ big_number& sum(const big_number& other);
-    //~ big_number& diff(const big_number& other);
+    big_number& sum(const big_number& other);
+    big_number& diff(const big_number& other);
     
 
 };

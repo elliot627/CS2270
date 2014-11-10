@@ -500,9 +500,19 @@
 		}
 		//compute difference of two numbers if they are both positive or negative
 		if(thiss.positive == other.positive){
-			if(thiss.hasMoreDigitsThan(other)){
+			if(thiss.hasMoreDigitsThan(other) == 1){
 				thiss.diff(other);
 				(*this) = thiss;
+			}
+			else if(thiss.hasMoreDigitsThan(other) == 0){
+				if(thiss > other){
+					thiss.diff(other);
+					(*this) = thiss;
+				}
+				else{
+					other.diff(thiss);
+					(*this) = other;
+				}
 			}
 			else{
 				other.diff(thiss);
@@ -511,7 +521,7 @@
 		}
 		//sum big_numbers if both positive or both negative
 		else{
-			if(thiss.hasMoreDigitsThan(other)){
+			if(thiss.hasMoreDigitsThan(other) == 1){
 				thiss.sum(other);
 				(*this) = thiss;
 			}

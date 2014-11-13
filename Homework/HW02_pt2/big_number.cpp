@@ -45,6 +45,9 @@
       (*this).head_ptr->prev = nullptr;
       (*this).digits--;
     }
+    if((*this).head_ptr == (*this).tail_ptr && (*this).head_ptr->data == '0'){
+      (*this).positive = true;
+    }
   }
 
   //prepends an item to the head_ptr of this
@@ -59,7 +62,7 @@
     (*this).head_ptr = incoming;
     (*this).digits++;
   }
-  
+
   //Determine whether (*this) has more digits than 'other'
   int big_number::hasMoreDigitsThan(const big_number& other){
 		if((*this).digits > other.digits){
@@ -72,7 +75,7 @@
 			return -1;
 		}
 	}
-	
+
 	// friend for comparing digits
 	// - from solution code
 	//~ int cmp(const big_number& a, const big_number& b){
@@ -80,33 +83,33 @@
 		//~ if (a.digits < b.digits) return -1;
 		//~ const node* a_cursor;
 		//~ const node* b_cursor;
-		//~ for (a_cursor = a.head_ptr, b_cursor = b.head_ptr; 
-			//~ b_cursor != nullptr && a_cursor->data == b_cursor->data; 
+		//~ for (a_cursor = a.head_ptr, b_cursor = b.head_ptr;
+			//~ b_cursor != nullptr && a_cursor->data == b_cursor->data;
 			//~ b_cursor = b_cursor->next, a_cursor = a_cursor->next)
 			//~ ;
 		//~ if (a_cursor == nullptr) return 0;
 		//~ if (a_cursor->data > b_cursor->data) return 1;
 		//~ return -1;
 	//~ }
-  
+
   //helper function for adding two bignums - assumes that |*this| >= |m|
   // -- Modifies *this, summing 'other' into its data
   big_number& big_number::sum(const big_number& other){
     (*this).digits = 0;                                       //set *this's digits = 0, and increment each time a digit is added
-    
+
     //pointers
-    node* cursor = (*this).tail_ptr; 
+    node* cursor = (*this).tail_ptr;
     const node* otherCursor = other.tail_ptr;
-    
+
     //addition variables
     unsigned int top, bottom, sum;
     unsigned int carry = 0;
-    
+
     while(cursor != nullptr && otherCursor != nullptr){       //As long as both numbers still have digits to be added,
       top = alpha.find(cursor->data);
       bottom = alpha.find(otherCursor->data);
       sum = carry + top + bottom;
-      
+
       if(sum >= (*this).base){                                //carrying needed... sum is greater than one digit can hold
         if((sum % (*this).base) < 10){                        //if remainder > 10, use conversion for ASCII characters '0'-'9'
 					cursor->data = (sum % (*this).base) + '0';
@@ -136,15 +139,15 @@
 				(*this).digits++;
 				break;
 			}
-			
+
 			cursor = cursor->prev;
 			otherCursor = otherCursor->prev;
     }
-    
-    
+
+
     //reaching the loop below implies that all of the digits of the 'bottom' number have been added
     //**carry may still remain
-        
+
     while(cursor != nullptr){
       top = alpha.find(cursor->data);
       sum = carry + top;
@@ -178,19 +181,20 @@
 				cursor = cursor->prev;
 			}
     }
+    (*this).killWorthlessZeros();
     return (*this);
   }
-  
+
   //helper function for subtracting two big_nums - assumes that |*this| > |other|
   //-- Modifies *this, subtracting 'other' from it's sum.
-  big_number& big_number::diff(const big_number& other){    
+  big_number& big_number::diff(const big_number& other){
     int top, bottom, result;
     int borrow = 0;
 
     node* cursor = (*this).tail_ptr;
     node* otherCursor = other.tail_ptr;
     (*this).digits = 0;
-    
+
     while(cursor != nullptr){
       top = alpha.find(cursor->data);
       if(otherCursor != nullptr){
@@ -279,7 +283,7 @@
 					(*this).digits++;																	//no remaining digits to subtract, no borrows to handle, finish incrementing digits until head_ptr reached.
 				}
 			}
-      
+
       cursor = cursor->prev;
       if(otherCursor != nullptr){
 				otherCursor = otherCursor->prev;
@@ -288,7 +292,7 @@
     (*this).killWorthlessZeros();
 		return (*this);
   }
-    
+
   // default constructor, creates a 0
   big_number::big_number(){
     (*this).head_ptr = (*this).tail_ptr = new node();
@@ -359,12 +363,12 @@
     if(s[0] == '+'){
       index++;
     }
-		
+
 		//check if any incoming digits exceed the given base
 		if(alpha.find(s[index]) >= b){
 			(*this).base = (alpha.find(s[index]) + 1);
 		}
-		
+
     //assign the first digit, then proceed more intelligently
     (*this).head_ptr = (*this).tail_ptr = new node();
     (*this).head_ptr->next = (*this).head_ptr->prev = nullptr;
@@ -385,27 +389,27 @@
 
     (*this).killWorthlessZeros();
   }
-  
+
   // conversion constructor; convert m to a different base
 	big_number::big_number(const big_number& m, unsigned int b){
 		head_ptr = tail_ptr = nullptr;
 		positive = m.positive;
-		
+
 		big_number zero;
 		zero.base = b;
 		*this = zero;
 		unsigned int digit;
-		
+
 		big_number* values = new big_number[m.base + 1];
-		
+
 		big_number j = 0;
 		j.base = b;
-		
+
 		for (unsigned int i = 0; i <= m.base; ++i){
 			values[i] = j;
 			++j;
 		}
-		
+
 		for (const node* cursor = m.head_ptr; cursor != nullptr; cursor = cursor->next){
 			if (isdigit(cursor->data)){
 				digit = cursor->data - '0';
@@ -445,10 +449,10 @@
 
   // set value to original value + b; return answer in original number's base
   big_number& big_number::operator+= (const big_number& b){
-		
+
 		big_number thiss((*this));																								//make copies
 		big_number other(b);
-		
+
 		if(thiss.base != other.base){																							//ensure same bases
 			big_number temp(other, thiss.base);
 			other = temp;
@@ -482,18 +486,18 @@
   big_number& big_number::operator*= (const big_number& other){
 		//~ node* cursor = (*this).tail_ptr;
 		//~ node* otherCursor = other.tail_ptr;																		//UNFINISHED :'(
-		//~ 	
+		//~
 		//~ while(
-		
+
     return *this;
   }
 
   // set value to original value - b; return answer in original number's base
   big_number& big_number::operator-= (const big_number& b){
-    
+
     big_number thiss((*this));																					//make copies to play with
     big_number other(b);
-    
+
     if(thiss.base != other.base){																				//ensure same bases
 			big_number temp(other, thiss.base);
 			other = temp;
@@ -554,18 +558,18 @@
 		(*this) -= 1;
     return *this;
   }
-	
+
 	//my operator > code
   bool operator >(const big_number& a, const big_number& b){
 		//make copy to allow conversion
     big_number bb(b);
-    
+
     //convert base if different
     if(a.base != bb.base){
 			big_number temp(bb, a.base);
 			bb = temp;
 		}
-    
+
 		if(a.positive && !bb.positive){
 			return true;
 		}
@@ -594,7 +598,7 @@
 			return false;												//if the above loop finishes without returning, the two numbers are therefore equal.
     }
   }
-  //~ 
+  //~
   //~ //solution operator code
   //~ bool operator >(const big_number& a, const big_number& b){
 	//~ //	big_number temp_b(b, a.base);

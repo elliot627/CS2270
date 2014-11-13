@@ -8,8 +8,7 @@ using namespace std;
 // PROTOTYPES for functions used by this test program:
 void pattern(ostream& outs, unsigned int n, unsigned int i);
 
-int main()
-{
+int main(){
   int i2;
   cout << "Enter an integer (a power of 2): ";
   cin >> i2;
@@ -19,8 +18,19 @@ int main()
 
 // i is the offset
 // n is the asterisks
-void pattern(ostream& outs, unsigned int n, unsigned int i)
-{
-
+void pattern(ostream& outs, unsigned int n, unsigned int i){
+  if(n == 0){
+    return;
+  }
+  pattern(outs, (n/2), i);
+  for(unsigned int k = 0; k < i; k++){
+    outs << "  ";
+  }
+  for(unsigned int k = 0; k < n; k++){
+    outs << "* ";
+  }
+  outs << "\n";
+  pattern(outs, (n/2), ((n/2) + i) );
+  
 }
 

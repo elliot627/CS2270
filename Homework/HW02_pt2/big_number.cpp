@@ -412,10 +412,10 @@
 
 		for (const node* cursor = m.head_ptr; cursor != nullptr; cursor = cursor->next){
 			if (isdigit(cursor->data)){
-				digit = cursor->data - '0';
+				digit = cursor->data + '0';
 			}
 			else{
-				digit = cursor->data - 'a' + 10;
+				digit = cursor->data + 'a' - 10;
 			}
 			big_number intermed = values[m.base] * (*this);
 			if (intermed > zero){
@@ -485,11 +485,13 @@
   // set value to original value * b; return answer in original number's base
   big_number& big_number::operator*= (const big_number& other){
 		//~ node* cursor = (*this).tail_ptr;
-		//~ node* otherCursor = other.tail_ptr;																		//UNFINISHED :'(
-		//~
+		//~ node* otherCursor = other.tail_ptr;                       //UNFINISHED :'(
+//~
+    //~ int bottomCounter = 0;
+//~
 		//~ while(
-
-    return *this;
+//~
+    //~ return *this;
   }
 
   // set value to original value - b; return answer in original number's base

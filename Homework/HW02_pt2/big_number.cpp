@@ -433,7 +433,7 @@
 
   // destructor
   big_number::~big_number(){
-	clear_list((*this).head_ptr, (*this).tail_ptr);
+		clear_list((*this).head_ptr, (*this).tail_ptr);
   }
 
   // assignment operator

@@ -7,7 +7,7 @@
    *  unsigned int digits
    *  bool positive
    *  unsigned int base
-  */s
+  */
 
 
 

@@ -7,30 +7,7 @@
    *  unsigned int digits
    *  bool positive
    *  unsigned int base
-  */
-
-
-  /*
-   *int constuctor code from class on Monday:
-   *
-   *  while(i < 0){
-   *    if(head_ptr != nullptr){
-   *      head_ptr->prev = new node();
-   *      head_ptr->prev->data = (i % 10) + '0';
-   *      head_ptr->prev->next = head_ptr;
-   *      head_ptr = head_ptr->prev;
-   *    }
-   *    else{
-   *      head_ptr = new node();
-   *      head_ptr->data = (i % 10) + '0';
-   *      tail_ptr = head_ptr;
-   *      .....?
-   *    }
-   *  }
-   *
-   *
-  */
-
+  */s
 
 
 
@@ -207,7 +184,7 @@
 	if(i != 0){
 	(*this).prepend(i + '0');
 	}
-	
+
 	(*this).killWorthlessZeros();
   }
 
@@ -220,7 +197,7 @@
     copy_list(m.head_ptr, (*this).head_ptr, (*this).tail_ptr);
   }
 
-  //constructor to create number from a string  
+  //constructor to create number from a string
   big_number::big_number(const string& s, unsigned int b){
     (*this).digits = 0;
     (*this).base = b;
@@ -249,7 +226,7 @@
       (*this).tail_ptr = tail_ptr->next;
       (*this).digits++;
     }
-    
+
     (*this).killWorthlessZeros();
   }
 

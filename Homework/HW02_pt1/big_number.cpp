@@ -170,22 +170,21 @@
     }
 
     //assign the first digit
-	(*this).tail_ptr->data = ((i % 10) + '0');
-	i /= 10;
-	(*this).digits = 1;
+    (*this).tail_ptr->data = ((i % 10) + '0');
+    i /= 10;
+    (*this).digits = 1;
 
 
-	//disect i's digits, from right to left and prepend to big_num
-	while((unsigned int)i >= (*this).base){
-	(*this).prepend((i % 10) + '0');                     //adding '0' to the int results in the char version of the same number
-	i /= 10;
-	}
-	//add final digit if it is not == 0
-	if(i != 0){
-	(*this).prepend(i + '0');
-	}
+    //disect i's digits, from right to left and prepend to big_num
+    while((unsigned int)i >= (*this).base){
+      (*this).prepend((i % 10) + '0');                     //adding '0' to the int results in the char version of the same number
+      i /= 10;
+    }
+    //add final digit if it is not == 0
+    if(i != 0){
+      (*this).prepend(i + '0');
+    }
 
-	(*this).killWorthlessZeros();
   }
 
   // copy constructor, creates a deep copy of m
@@ -232,7 +231,7 @@
 
   // destructor
   big_number::~big_number(){
-	clear_list((*this).head_ptr, (*this).tail_ptr);
+    clear_list((*this).head_ptr, (*this).tail_ptr);
   }
 
   // assignment operator
@@ -283,27 +282,27 @@
 
   bool operator >(const big_number& a, const big_number& b){
     if(a.base == b.base){
-		if(a.digits > b.digits){
-			return true;												//if a is the same base and has more digits, it must be bigger.
-		}
-		if(a.digits < b.digits){
-			return false;												//if a is the same base and has fewer digits, it must be smaller
-		}
-		else{															//if they have the same number of digits, start comparing them, starting from the left (most important)
-			node* acursor = a.head_ptr;
-			node* bcursor = b.head_ptr;
-			while(acursor != nullptr){
-				if(acursor->data > bcursor->data){
-					return true;
-				}
-				if(acursor->data < bcursor->data){
-					return false;
-				}
-				acursor = acursor->next;
-				bcursor = bcursor->next;
-			}
-			return false;												//if the above loop finishes without returning, the two numbers are therefore equal.
-		}
+      if(a.digits > b.digits){
+        return true;												//if a is the same base and has more digits, it must be bigger.
+      }
+      if(a.digits < b.digits){
+        return false;												//if a is the same base and has fewer digits, it must be smaller
+      }
+      else{	    														//if they have the same number of digits, start comparing them, starting from the left (most important)
+        node* acursor = a.head_ptr;
+        node* bcursor = b.head_ptr;
+        while(acursor != nullptr){
+          if(acursor->data > bcursor->data){
+            return true;
+          }
+          if(acursor->data < bcursor->data){
+            return false;
+          }
+          acursor = acursor->next;
+          bcursor = bcursor->next;
+        }
+        return false;												//if the above loop finishes without returning, the two numbers are therefore equal.
+      }
     }
     else{
       cout << "\nSorry this comparison only works on numbers of the same base right now.\n" << endl;
@@ -324,19 +323,19 @@
   }
 
   bool operator==(const big_number& a, const big_number& b){			//method currently only considers EXACT matches to be equal
-	bool exactDigits = true;
-	if(a.digits == b.digits){
-		node* cursor_a = a.head_ptr;
-		node* cursor_b = b.head_ptr;
-		while(cursor_a != nullptr){										//loop through both big_nums, comparing each digit for any discrepencies
-			if(cursor_a->data != cursor_b->data){
-				exactDigits = false;
-			}
-			cursor_a = cursor_a->next;
-			cursor_b = cursor_b->next;
-		}
-	}
-	return ((a.digits == b.digits) && (a.base == b.base) && (a.positive == b.positive) && exactDigits);
+    bool exactDigits = true;
+    if(a.digits == b.digits){
+      node* cursor_a = a.head_ptr;
+      node* cursor_b = b.head_ptr;
+      while(cursor_a != nullptr){										//loop through both big_nums, comparing each digit for any discrepencies
+        if(cursor_a->data != cursor_b->data){
+          exactDigits = false;
+        }
+        cursor_a = cursor_a->next;
+        cursor_b = cursor_b->next;
+      }
+    }
+    return ((a.digits == b.digits) && (a.base == b.base) && (a.positive == b.positive) && exactDigits);
   }
 
   bool operator!=(const big_number& a, const big_number& b){

@@ -8,20 +8,24 @@ graph::graph(){
 
 // destructor is easy, we just clear our vertex vector and our edge map
 graph::~graph(){
-	
+	edges.clear();
+	vertices.clear();	
 }
 
 // add a vertex to the graph by adding it to the vector
 void graph::add_vertex(const vertex& v){
-	
+	(*this).vertices.push_back(v);
 }
 
 // add an edge to the graph as long as it's under the distance limit
 void graph::add_edge(vertex* v, vertex* u, double limit){
-	
+	if(great_circle_distance(v, u) < limit){
+		edges.at(v).push_back(u);
+		edges.at(u).push_back(v);
+	}
 }
 
-// compute distance from one lat/long to another as the crow flies
+// compute distance from one lat/long to another as the crow fliesv
 double graph::great_circle_distance(const vertex& v, const vertex& u) const{
 	double PI = 3.1415926535897932;
 	double lat1, lat2, long1, long2, dist;

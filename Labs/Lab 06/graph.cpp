@@ -2,28 +2,27 @@
 using namespace std;
 
 // default constructor at work here; pretty cute!
-graph::graph()
-{
+graph::graph(){
+	
 }
 
 // destructor is easy, we just clear our vertex vector and our edge map
-graph::~graph()
-{
+graph::~graph(){
+	
 }
 
 // add a vertex to the graph by adding it to the vector
-void graph::add_vertex(const vertex& v)
-{
+void graph::add_vertex(const vertex& v){
+	
 }
 
 // add an edge to the graph as long as it's under the distance limit
-void graph::add_edge(vertex* v, vertex* u, double limit)
-{
+void graph::add_edge(vertex* v, vertex* u, double limit){
+	
 }
 
 // compute distance from one lat/long to another as the crow flies
-double graph::great_circle_distance(const vertex& v, const vertex& u) const
-{
+double graph::great_circle_distance(const vertex& v, const vertex& u) const{
 	double PI = 3.1415926535897932;
 	double lat1, lat2, long1, long2, dist;
 
@@ -45,8 +44,7 @@ double graph::great_circle_distance(const vertex& v, const vertex& u) const
 
 // read in 120 cities and their latitude/longitude
 // cities within limit km of each other are connected by edges
-void init_graph_from_file(graph& g, const string& filename, double limit)
-{
+void init_graph_from_file(graph& g, const string& filename, double limit){
 	string line;
 	string city_name;
 	int lat1, lat2, long1, long2;
@@ -79,8 +77,7 @@ void init_graph_from_file(graph& g, const string& filename, double limit)
 }
 
 // function defined by Michael Main for input data
-void open_for_read(ifstream& f, string filename)
-{
+void open_for_read(ifstream& f, string filename){
 	f.open(filename);
 	if (f.fail())
 	{
@@ -90,8 +87,7 @@ void open_for_read(ifstream& f, string filename)
 }
 
 // function defined by Michael Main for input data
-bool is_more_stuff_there(ifstream& f)
-{
+bool is_more_stuff_there(ifstream& f){
 		return (f && (f.peek() != EOF));
 }
 

@@ -19,7 +19,7 @@ void graph::add_vertex(const vertex& v){
 
 // add an edge to the graph as long as it's under the distance limit
 void graph::add_edge(vertex* v, vertex* u, double limit){
-	if(great_circle_distance(v, u) < limit){
+	if(great_circle_distance(*v, *u) < limit){
 		edges.at(v).push_back(u);
 		edges.at(u).push_back(v);
 	}
@@ -59,21 +59,19 @@ void init_graph_from_file(graph& g, const string& filename, double limit){
 	open_for_read(file_to_read, filename);
 
 
-  int k = 0;
-  while(k < 120){
+  while(is_more_stuff_there(file_to_read)){
     //read in a line, process that city
     //add that vertex
-    ++k;
   }
 
 	// now we are done with our file
 	file_to_read.close();
 
   //add the edges
-  for(unsigned int i = 0; i < vertices.size(); i++){
-    for(unsigned int j = 0; j <vertices.size(); j++){
+  for(unsigned int i = 0; i < g.vertices.size(); i++){
+    for(unsigned int j = 0; j < g.vertices.size(); j++){
       if(i != j){                                       //ensure edge to self is not added
-        add_edge(&vertices[i], &vertices[j], limit);
+        g.add_edge(&g.vertices[i], &g.vertices[j], limit);
       }
     }
   }

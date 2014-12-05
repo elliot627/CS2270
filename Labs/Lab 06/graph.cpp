@@ -3,7 +3,7 @@ using namespace std;
 
 // default constructor at work here; pretty cute!
 graph::graph(){
-	
+	//woohoo!
 }
 
 // destructor is easy, we just clear our vertex vector and our edge map
@@ -49,26 +49,43 @@ double graph::great_circle_distance(const vertex& v, const vertex& u) const{
 // read in 120 cities and their latitude/longitude
 // cities within limit km of each other are connected by edges
 void init_graph_from_file(graph& g, const string& filename, double limit){
+	//variables for managing file / current line in file
+	ifstream file_to_read;
 	string line;
+	
+	//variables for managing city data
 	string city_name;
 	int lat1, lat2, long1, long2;
-	ifstream file_to_read;
-	char compass_dir;
+	string lat1str, lat2str, long1str, long2str;
+	int nextSpace;														//manages position of next ' '
+	int colonLoc;
+	//~ char compass_dir;
 
 	// open the data file of cities
 	open_for_read(file_to_read, filename);
 
 
-  while(is_more_stuff_there(file_to_read)){
-    //read in a line, process that city
-    //add that vertex
-  }
+  //~ while(is_more_stuff_there(file_to_read)){
+		getline(file_to_read, line);
+		
+		colonLoc = line.find(':');
+		city_name = line.substr(0, colonLoc);
+		cout << city_name << "*" << endl;
+		
+		nextSpace = line.find(' ', colonLoc + 2);				//finds location of ' ' after first lat digit
+		lat1str = line.substr(colonLoc + 2, nextSpace);
+		lat1 = (stoi(lat1str, nullptr, 10));
+		cout << lat1 << "*" << endl;
+		
+	
+  //~ }
 
 	// now we are done with our file
 	file_to_read.close();
 
   //add the edges
   for(unsigned int i = 0; i < g.vertices.size(); i++){
+		cout << g.vertices[i].get_city_name();
     for(unsigned int j = 0; j < g.vertices.size(); j++){
       if(i != j){                                       //ensure edge to self is not added
         g.add_edge(&g.vertices[i], &g.vertices[j], limit);

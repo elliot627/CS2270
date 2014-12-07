@@ -65,7 +65,7 @@ void init_graph_from_file(graph& g, const string& filename, double limit){
 	open_for_read(file_to_read, filename);
 
 
-  //~ while(is_more_stuff_there(file_to_read)){
+  while(is_more_stuff_there(file_to_read)){
 		getline(file_to_read, line);
 		
 		//read city name (data before ':')
@@ -111,8 +111,11 @@ void init_graph_from_file(graph& g, const string& filename, double limit){
 			long1 *= -1;
 			long2 *= -1;
 		}
+		
+		vertex city(city_name, lat1, lat2, long1, long2);
+		g.add_vertex(city);
 	
-  //~ }
+	}	//end while
 
 	// now we are done with our file
 	file_to_read.close();

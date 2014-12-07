@@ -85,7 +85,6 @@ void init_graph_from_file(graph& g, const string& filename, double limit){
 		
 		//..and lattitude compass direction
 		coords.get(compass_dir);
-		cout << compass_dir << "*" << endl;
 		
 		//delimiter not used to read compass, so eat next space
 		coords.get();
@@ -106,15 +105,12 @@ void init_graph_from_file(graph& g, const string& filename, double limit){
 		
 		//..and longitude compass direction
 		coords.get(compass_dir);
-		cout << compass_dir << "*" << endl;
 		
 		//..modify longitude degrees and minutes if west of prime meridian
 		if(compass_dir == 'W'){
 			long1 *= -1;
 			long2 *= -1;
 		}
-		
-		cout << city_name << ": " << lat1 << ' ' << lat2 << ' ' << long1 << ' ' << long2 << endl;
 	
   //~ }
 

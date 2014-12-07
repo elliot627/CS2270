@@ -122,7 +122,6 @@ void init_graph_from_file(graph& g, const string& filename, double limit){
 
   //add the edges
   for(unsigned int i = 0; i < g.vertices.size(); i++){
-		cout << g.vertices[i].get_city_name();
     for(unsigned int j = 0; j < g.vertices.size(); j++){
       if(i != j){                                       //ensure edge to self is not added
         g.add_edge(&g.vertices[i], &g.vertices[j], limit);

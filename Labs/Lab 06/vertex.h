@@ -10,11 +10,11 @@ class vertex{
 	
     public:
 	vertex(const string& initname, int init_latitude_degrees, int init_latitude_minutes, int init_longitude_degrees, int init_longitude_minutes){
-					name_of_city = initname;
-					latitude_degrees = init_latitude_degrees;
-					longitude_degrees = init_longitude_degrees;
-					latitude_minutes = init_latitude_minutes;
-					longitude_minutes = init_longitude_minutes;
+		name_of_city = initname;
+		latitude_degrees = init_latitude_degrees;
+		longitude_degrees = init_longitude_degrees;
+		latitude_minutes = init_latitude_minutes;
+		longitude_minutes = init_longitude_minutes;
 	}
 	
 	int get_latitude_degrees() const{

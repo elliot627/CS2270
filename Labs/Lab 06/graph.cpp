@@ -1,4 +1,5 @@
 #include "graph.h"
+#include <sstream>
 using namespace std;
 
 // default constructor at work here; pretty cute!
@@ -56,36 +57,71 @@ void init_graph_from_file(graph& g, const string& filename, double limit){
 	//variables for managing city data
 	string city_name;
 	int lat1, lat2, long1, long2;
+	unsigned int colonLoc;
 	string lat1str, lat2str, long1str, long2str;
-	int nextSpace;														//manages position of next ' '
-	int colonLoc;
-	//~ char compass_dir;
+	char compass_dir;
 
 	// open the data file of cities
 	open_for_read(file_to_read, filename);
 
 
-  //~ while(is_more_stuff_there(file_to_read)){
+  while(is_more_stuff_there(file_to_read)){
 		getline(file_to_read, line);
 		
+		//read city name (data before ':')
 		colonLoc = line.find(':');
 		city_name = line.substr(0, colonLoc);
-		cout << city_name << "*" << endl;
 		
-		nextSpace = line.find(' ', colonLoc + 2);				//finds location of ' ' after first lat digit
-		lat1str = line.substr(colonLoc + 2, nextSpace);
-		lat1 = (stoi(lat1str, nullptr, 10));
-		cout << lat1 << "*" << endl;
+		//build istringstream from current line to break into tokens
+		istringstream coords(line.substr(colonLoc + 2));
 		
+		//pull and store token for lattitude degrees
+		getline(coords, lat1str, ' ');
+		lat1 = stoi(lat1str, nullptr, 10);
+		
+		//...and lattitude minutes
+		getline(coords, lat2str, ' ');
+		lat2 = stoi(lat2str, nullptr, 10);
+		
+		//..and lattitude compass direction
+		coords.get(compass_dir);
+		
+		//delimiter not used to read compass, so eat next space
+		coords.get();
+		
+		//..modify lattitude degrees and minutes if below equator
+		if(compass_dir == 'S'){
+			lat1 *= -1;
+			lat2 *= -1;
+		}
+		
+		//pull and store token for longitude degrees
+		getline(coords, long1str, ' ');
+		long1 = stoi(long1str, nullptr, 10);
+		
+		//..and longitude minutes
+		getline(coords, long2str, ' ');
+		long2 = stoi(long2str, nullptr, 10);
+		
+		//..and longitude compass direction
+		coords.get(compass_dir);
+		
+		//..modify longitude degrees and minutes if west of prime meridian
+		if(compass_dir == 'W'){
+			long1 *= -1;
+			long2 *= -1;
+		}
+		
+		vertex city(city_name, lat1, lat2, long1, long2);
+		g.add_vertex(city);
 	
-  //~ }
+	}	//end while
 
 	// now we are done with our file
 	file_to_read.close();
 
   //add the edges
   for(unsigned int i = 0; i < g.vertices.size(); i++){
-		cout << g.vertices[i].get_city_name();
     for(unsigned int j = 0; j < g.vertices.size(); j++){
       if(i != j){                                       //ensure edge to self is not added
         g.add_edge(&g.vertices[i], &g.vertices[j], limit);

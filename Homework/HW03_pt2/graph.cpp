@@ -11,36 +11,30 @@
 using namespace std;
 
 // default constructor at work here; pretty cute!
-graph::graph()
-{
+graph::graph(){
 }	
 
 // destructor is easy, we just clear our vertex vector and our edge map
-graph::~graph()
-{
+graph::~graph(){
 	vertices.clear();
 	edges.clear();
 }	
 
 // add a vertex to the graph by adding it to the vector
-void graph::add_vertex(const vertex& v) 
-{
+void graph::add_vertex(const vertex& v) {
 	vertices.push_back(v);
 }
 
 // add an edge to the graph as long as it's under the distance limit
-void graph::add_edge(vertex* v, vertex* u, double limit)
-{
+void graph::add_edge(vertex* v, vertex* u, double limit){
 	double dist = great_circle_distance(*v, *u);
-	if (dist <= limit)
-	{
+	if (dist <= limit){
 		edges[v].push_back(u);
 	}
 }
 
 // compute distance from one lat/long to another as the crow flies
-double graph::great_circle_distance(const vertex& v, const vertex& u) const
-{
+double graph::great_circle_distance(const vertex& v, const vertex& u) const{
 	double PI = 3.1415926535897932;
 	double lat1, lat2, long1, long2, dist;
 
@@ -61,8 +55,7 @@ double graph::great_circle_distance(const vertex& v, const vertex& u) const
 }
 
 // check whether a path exists via depth first search.
-bool graph::does_dfs_path_exist(const string& city1, const string& city2)
-{
+bool graph::does_dfs_path_exist(const string& city1, const string& city2){
 	deque<vertex*> yet_to_explore;
 	map<vertex*, bool> visited;
 	map<vertex*, vertex*> path;
@@ -76,16 +69,14 @@ bool graph::does_dfs_path_exist(const string& city1, const string& city2)
 	// launch the depth first search
 	// if it succeeds, we say that it worked
 	cout << "DEPTH FIRST" << endl;
-	if (depth_first_search(u, visited, yet_to_explore, path))
-	{
+	if (depth_first_search(u, visited, yet_to_explore, path)){
 		cout << "path exists! between " << v->get_city_name() << " and " << u->get_city_name() << endl;
 
 		// now, use the path map to print the path we took
 		vertex* node = u;
 		cout << u->get_city_name() << endl;
 		size_t length = 0;
-		while (path.find(node) != path.end() && path[node] != nullptr)
-		{
+		while (path.find(node) != path.end() && path[node] != nullptr){
 			++length;
 			vertex* ancestor = path[node];
 			cout << ancestor->get_city_name() << endl;
@@ -96,16 +87,14 @@ bool graph::does_dfs_path_exist(const string& city1, const string& city2)
 		return true;
 	}
 	// if it fails, we admit there is no path
-	else
-	{
+	else{
 		cout << "no path exists! between " << v->get_city_name() << " and " << u->get_city_name() << endl;
 		return false;
 	}
 }
 
 // check whether a path exists via breadth first search.
-bool graph::does_bfs_path_exist(const string& city1, const string& city2)
-{
+bool graph::does_bfs_path_exist(const string& city1, const string& city2){
 	deque<vertex*> yet_to_explore;
 	map<vertex*, bool> visited;
 	map<vertex*, vertex*> path;
@@ -119,16 +108,14 @@ bool graph::does_bfs_path_exist(const string& city1, const string& city2)
 	// launch the breadth first search
 	// if it succeeds, we say that it worked
 	cout << "BREADTH FIRST" << endl;
-	if (breadth_first_search(u, visited, yet_to_explore, path))
-	{
+	if (breadth_first_search(u, visited, yet_to_explore, path)){
 		cout << "path exists! between " << v->get_city_name() << " and " << u->get_city_name() << endl;
 
 			// now, use the path map to print the path we took
 		vertex* node = u;
 		cout << u->get_city_name() << endl;
 		size_t length= 0;
-		while (path.find(node) != path.end() && path[node] != nullptr)
-		{
+		while (path.find(node) != path.end() && path[node] != nullptr){
 			vertex* ancestor = path[node];
 			cout << ancestor->get_city_name() << endl;
 			node = ancestor;
@@ -139,8 +126,7 @@ bool graph::does_bfs_path_exist(const string& city1, const string& city2)
 	   
 	}
 	// if it fails, we admit there is no path
-	else
-	{
+	else{
 		cout << "no path exists! between " << v->get_city_name() << " and " << u->get_city_name() << endl;
 		return false;
 	}
@@ -153,8 +139,7 @@ bool graph::does_bfs_path_exist(const string& city1, const string& city2)
 // for each neighbor, we store a pointer to the vertex* we came from
 // and then return the result of depth first search again.
 // If the stack is empty, we give up (return false)
-bool graph::depth_first_search(vertex* u, map<vertex*, bool>& visited, deque<vertex *>& yet_to_explore, map<vertex*, vertex*>& path)
-{
+bool graph::depth_first_search(vertex* u, map<vertex*, bool>& visited, deque<vertex *>& yet_to_explore, map<vertex*, vertex*>& path){
 	return false;
 }
 
@@ -165,15 +150,13 @@ bool graph::depth_first_search(vertex* u, map<vertex*, bool>& visited, deque<ver
 // for each neighbor, we store a pointer to the vertex* we came from
 // and then return the result of breadth first search again.
 // If the queue is empty, we give up (return false)
-bool graph::breadth_first_search(vertex* u, map<vertex*, bool>& visited, deque<vertex*>& yet_to_explore, map<vertex*, vertex*>& path)
-{
+bool graph::breadth_first_search(vertex* u, map<vertex*, bool>& visited, deque<vertex*>& yet_to_explore, map<vertex*, vertex*>& path){
 	return false;
 }
 	
 // read in 120 cities and their latitude/longitude
 // cities within limit km of each other are connected by edges
-void init_graph_from_file(graph& g, const string& filename, double limit)
-{
+void init_graph_from_file(graph& g, const string& filename, double limit){
 	string line;
 	string city_name;
 	int lat1, lat2, long1, long2;
@@ -185,30 +168,27 @@ void init_graph_from_file(graph& g, const string& filename, double limit)
 	open_for_read(file_to_read, filename.c_str());
 	size_t count = 0;
 	// keep reading until all cities have been added
-	while (is_more_stuff_there(file_to_read) && count < 120)
-	{
+	while (is_more_stuff_there(file_to_read) && count < 120){
 		string city_name = "";
 		// build the city name from the file
-		do
-		{
+		do{
 			file_to_read >> part_string;
 			city_name += part_string + ' ';
 		} while (city_name[city_name.length() - 2] != ':');
-		city_name = city_name.substr(0, city_name.length() - 2);
+		
+    city_name = city_name.substr(0, city_name.length() - 2);
 
 		// grab latitude coordinates
 		file_to_read >> lat1 >> lat2 >> compass_dir;
 		// southern coordinates are negative
-		if (compass_dir == 'S')
-		{
+		if (compass_dir == 'S'){
 			lat1 *= -1;
 			lat2 *= -1;
 		}
 		// and grab longitude coordinates
 		file_to_read >> long1 >> long2 >> compass_dir;
 		// western coordinates are negative
-		if (compass_dir == 'W')
-		{
+		if (compass_dir == 'W'){
 			long1 *= -1;
 			long2 *= -1;
 		}
@@ -223,12 +203,9 @@ void init_graph_from_file(graph& g, const string& filename, double limit)
 
 	// now we compute the edges that are within the allowed distance
 	vector<vertex>::iterator it1, it2;
-	for (it1 = g.vertices.begin(); it1 != g.vertices.end(); ++it1)
-	{
-		for (it2 = g.vertices.begin(); it2 != g.vertices.end(); ++it2)
-		{
-			if (it1 != it2)
-			{
+	for (it1 = g.vertices.begin(); it1 != g.vertices.end(); ++it1){
+		for (it2 = g.vertices.begin(); it2 != g.vertices.end(); ++it2){
+			if (it1 != it2){
 				g.add_edge(&*it1, &*it2, limit);
 			}
 		}
@@ -236,19 +213,16 @@ void init_graph_from_file(graph& g, const string& filename, double limit)
 }
 
 // function defined by Michael Main for input data
-void open_for_read(ifstream& f, string filename)
-{
+void open_for_read(ifstream& f, string filename){
 	f.open(filename);
-	if (f.fail())
-	{
+	if (f.fail()){
 		cerr << "Could not open input file." << endl;
 		exit(0);
 	}
 }
 
 // function defined by Michael Main for input data
-bool is_more_stuff_there(ifstream& f)
-{
+bool is_more_stuff_there(ifstream& f){
 		return (f && (f.peek() != EOF));
 }
 

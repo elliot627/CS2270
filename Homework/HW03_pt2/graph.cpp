@@ -141,6 +141,7 @@ bool graph::does_bfs_path_exist(const string& city1, const string& city2){
 // If the stack is empty, we give up (return false)
 bool graph::depth_first_search(vertex* u, map<vertex*, bool>& visited, deque<vertex *>& yet_to_explore, map<vertex*, vertex*>& path){
 	return false;
+  
 }
 
 // LOGIC: if there's still stuff on the queue,
@@ -227,7 +228,7 @@ bool is_more_stuff_there(ifstream& f){
 }
 
 bool depth_first_search(vertex* u, map<vertex*, bool>& visited, deque<vertex *>& yet_to_explore, map<vertex*, vertex*>& path){
-	//if the deque is not empyty,
+	//if the deque is not empty,
 	if(!yet_to_explore.empty()){
 		//find the last item in the deque
 		vertex* w = yet_to_explore.back();

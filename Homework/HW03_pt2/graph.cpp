@@ -247,7 +247,31 @@ bool graph::depth_first_search(vertex* u, map<vertex*, bool>& visited, deque<ver
 // and then return the result of breadth first search again.
 // If the queue is empty, we give up (return false)
 bool graph::breadth_first_search(vertex* u, map<vertex*, bool>& visited, deque<vertex*>& yet_to_explore, map<vertex*, vertex*>& path){
-	return false;
+	//if the deque is not empty,
+	if(!yet_to_explore.empty()){
+		//find the first item in the deque
+		vertex* w = yet_to_explore.front();
+		//pop this item w off the deque
+		yet_to_explore.pop_front();
+		//if that items' u, we're done (base cases)
+		if((*w).get_city_name() == (*u).get_city_name()){
+			return true;
+		}
+		vector<vertex*>::iterator it;			//TODO: Should be const iterator
+		for(it = edges[w].begin(); it != edges[w].end(); it++){
+			vertex* neighbor = *it;
+			if(visited[neighbor] == false){
+				yet_to_explore.push_back(neighbor);
+				visited[neighbor] = true;
+				path[neighbor] = w;				//we came from w to get to neighbor
+			}
+		}
+		return depth_first_search(u, visited, yet_to_explore, path);
+	}
+	else{
+		//give up!
+		return false;
+	}
 }
 
 

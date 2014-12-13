@@ -131,17 +131,6 @@ bool graph::does_bfs_path_exist(const string& city1, const string& city2){
 		return false;
 	}
 }
-
-// LOGIC: if there's still stuff on the queue,
-// we pop one vertex*, then check it to see if it's the destination
-// if yes, we are done (return true)
-// if no, we push all its unvisited neighbor vertex* on the queue
-// for each neighbor, we store a pointer to the vertex* we came from
-// and then return the result of breadth first search again.
-// If the queue is empty, we give up (return false)
-bool graph::breadth_first_search(vertex* u, map<vertex*, bool>& visited, deque<vertex*>& yet_to_explore, map<vertex*, vertex*>& path){
-	return false;
-}
 	
 // read in 120 cities and their latitude/longitude
 // cities within limit km of each other are connected by edges
@@ -248,6 +237,17 @@ bool graph::depth_first_search(vertex* u, map<vertex*, bool>& visited, deque<ver
 		//give up!
 		return false;
 	}
+}
+
+// LOGIC: if there's still stuff on the queue,
+// we pop one vertex*, then check it to see if it's the destination
+// if yes, we are done (return true)
+// if no, we push all its unvisited neighbor vertex* on the queue
+// for each neighbor, we store a pointer to the vertex* we came from
+// and then return the result of breadth first search again.
+// If the queue is empty, we give up (return false)
+bool graph::breadth_first_search(vertex* u, map<vertex*, bool>& visited, deque<vertex*>& yet_to_explore, map<vertex*, vertex*>& path){
+	return false;
 }
 
 

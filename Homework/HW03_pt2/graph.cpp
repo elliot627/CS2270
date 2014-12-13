@@ -132,13 +132,7 @@ bool graph::does_bfs_path_exist(const string& city1, const string& city2){
 	}
 }
 
-// LOGIC: if there's still stuff on the stack,
-// we pop one vertex*, then check it to see if it's the destination
-// if yes, we are done (return true)
-// if no, we push all its unvisited neighbor vertex* on the stack
-// for each neighbor, we store a pointer to the vertex* we came from
-// and then return the result of depth first search again.
-// If the stack is empty, we give up (return false)
+
 bool graph::depth_first_search(vertex* u, map<vertex*, bool>& visited, deque<vertex *>& yet_to_explore, map<vertex*, vertex*>& path){
 	return false;
   
@@ -227,6 +221,13 @@ bool is_more_stuff_there(ifstream& f){
 		return (f && (f.peek() != EOF));
 }
 
+// LOGIC: if there's still stuff on the stack,
+// we pop one vertex*, then check it to see if it's the destination
+// if yes, we are done (return true)
+// if no, we push all its unvisited neighbor vertex* on the stack
+// for each neighbor, we store a pointer to the vertex* we came from
+// and then return the result of depth first search again.
+// If the stack is empty, we give up (return false)
 bool depth_first_search(vertex* u, map<vertex*, bool>& visited, deque<vertex *>& yet_to_explore, map<vertex*, vertex*>& path){
 	//if the deque is not empty,
 	if(!yet_to_explore.empty()){

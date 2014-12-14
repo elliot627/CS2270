@@ -131,29 +131,6 @@ bool graph::does_bfs_path_exist(const string& city1, const string& city2){
 		return false;
 	}
 }
-
-// LOGIC: if there's still stuff on the stack,
-// we pop one vertex*, then check it to see if it's the destination
-// if yes, we are done (return true)
-// if no, we push all its unvisited neighbor vertex* on the stack
-// for each neighbor, we store a pointer to the vertex* we came from
-// and then return the result of depth first search again.
-// If the stack is empty, we give up (return false)
-bool graph::depth_first_search(vertex* u, map<vertex*, bool>& visited, deque<vertex *>& yet_to_explore, map<vertex*, vertex*>& path){
-	return false;
-  
-}
-
-// LOGIC: if there's still stuff on the queue,
-// we pop one vertex*, then check it to see if it's the destination
-// if yes, we are done (return true)
-// if no, we push all its unvisited neighbor vertex* on the queue
-// for each neighbor, we store a pointer to the vertex* we came from
-// and then return the result of breadth first search again.
-// If the queue is empty, we give up (return false)
-bool graph::breadth_first_search(vertex* u, map<vertex*, bool>& visited, deque<vertex*>& yet_to_explore, map<vertex*, vertex*>& path){
-	return false;
-}
 	
 // read in 120 cities and their latitude/longitude
 // cities within limit km of each other are connected by edges
@@ -227,13 +204,55 @@ bool is_more_stuff_there(ifstream& f){
 		return (f && (f.peek() != EOF));
 }
 
-bool depth_first_search(vertex* u, map<vertex*, bool>& visited, deque<vertex *>& yet_to_explore, map<vertex*, vertex*>& path){
+// LOGIC: if there's still stuff on the stack,
+// we pop one vertex*, then check it to see if it's the destination
+// if yes, we are done (return true)
+// if no, we push all its unvisited neighbor vertex* on the stack
+// for each neighbor, we store a pointer to the vertex* we came from
+// and then return the result of depth first search again.
+// If the stack is empty, we give up (return false)
+bool graph::depth_first_search(vertex* u, map<vertex*, bool>& visited, deque<vertex *>& yet_to_explore, map<vertex*, vertex*>& path){
 	//if the deque is not empty,
 	if(!yet_to_explore.empty()){
 		//find the last item in the deque
 		vertex* w = yet_to_explore.back();
 		//pop this item w off the deque
 		yet_to_explore.pop_back();
+		//if that items' u, we're done (base cases)
+		if((*w).get_city_name() == (*u).get_city_name()){
+			return true;
+		}
+		vector<vertex*>::iterator it;			//TODO: Should be const iterator
+		for(it = edges[w].begin(); it != edges[w].end(); it++){
+			vertex* neighbor = *it;
+			if(visited[neighbor] == false){
+				yet_to_explore.push_back(neighbor);
+				visited[neighbor] = true;
+				path[neighbor] = w;				//we came from w to get to neighbor
+			}
+		}
+		return depth_first_search(u, visited, yet_to_explore, path);
+	}
+	else{
+		//give up!
+		return false;
+	}
+}
+
+// LOGIC: if there's still stuff on the queue,
+// we pop one vertex*, then check it to see if it's the destination
+// if yes, we are done (return true)
+// if no, we push all its unvisited neighbor vertex* on the queue
+// for each neighbor, we store a pointer to the vertex* we came from
+// and then return the result of breadth first search again.
+// If the queue is empty, we give up (return false)
+bool graph::breadth_first_search(vertex* u, map<vertex*, bool>& visited, deque<vertex*>& yet_to_explore, map<vertex*, vertex*>& path){
+	//if the deque is not empty,
+	if(!yet_to_explore.empty()){
+		//find the first item in the deque
+		vertex* w = yet_to_explore.front();
+		//pop this item w off the deque
+		yet_to_explore.pop_front();
 		//if that items' u, we're done (base cases)
 		if((*w).get_city_name() == (*u).get_city_name()){
 			return true;

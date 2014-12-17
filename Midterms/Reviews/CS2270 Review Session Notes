@@ -1,0 +1,4 @@
+CS2270 Review Session Notes
+
++Lists / Linkedlists are faster than vectors at inserting elements because it is very easy to create a new node at an arbitrary memory address and re-assign pointers.
+
